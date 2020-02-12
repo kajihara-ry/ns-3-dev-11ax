@@ -1,0 +1,148 @@
+Running Sim0_1_1
+Running Sim0_2_1
+Running Sim0_2_2
+Running Sim0_1_2
+Waf: Entering directory `/home/kajihara/simulation/ns3/build'
+Waf: Entering directory `/home/kajihara/simulation/ns3/build'
+Waf: Entering directory `/home/kajihara/simulation/ns3/build'
+Waf: Entering directory `/home/kajihara/simulation/ns3/build'
+Waf: Leaving directory `/home/kajihara/simulation/ns3/build'
+Build commands will be stored in build/compile_commands.json
+Waf: Leaving directory `/home/kajihara/simulation/ns3/build'
+Build commands will be stored in build/compile_commands.json
+Waf: Leaving directory `/home/kajihara/simulation/ns3/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.328s)
+'build' finished successfully (0.316s)
+'build' finished successfully (0.315s)
+Waf: Leaving directory `/home/kajihara/simulation/ns3/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.321s)
+Uplink interval:+2400000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 5
+nBss: 2 nStas/Bss: 2 => nStas: 4
+Uplink interval:+2400000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 5
+nBss: 1 nStas/Bss: 2 => nStas: 2
+Uplink interval:+1200000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 5
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Uplink interval:+1200000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 5
+nBss: 1 nStas/Bss: 1 => nStas: 1
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 1
+Nodes per AP: 1
+Distance between APs [m]: 0.01
+Radius [m]: 0.01
+Uplink [Mbps]: 10
+Downlink [Mbps]: 0
+Uplink Efficiency   58.4355 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 5.84355
+Throughput,  AP1 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 5.84355
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-Sim0_1_1.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-Sim0_1_1.flowmon
+../../../spatial-reuse-SR-stats-Sim0_1_1.dat
+../../../spatial-reuse-operatorA-Sim0_1_1
+../../../spatial-reuse-positions-Sim0_1_1.csv
+../../../spatial-reuse-state-Sim0_1_1.dat
+../../../spatial-reuse-tgax-calibration-timings-Sim0_1_1.dat
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 1
+Nodes per AP: 2
+Distance between APs [m]: 0.01
+Radius [m]: 0.01
+Uplink [Mbps]: 10
+Downlink [Mbps]: 0
+Uplink Efficiency   55.8799 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 5.58799
+Throughput,  AP1 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 5.58799
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-Sim0_1_2.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-Sim0_1_2.flowmon
+../../../spatial-reuse-SR-stats-Sim0_1_2.dat
+../../../spatial-reuse-operatorA-Sim0_1_2
+../../../spatial-reuse-positions-Sim0_1_2.csv
+../../../spatial-reuse-state-Sim0_1_2.dat
+../../../spatial-reuse-tgax-calibration-timings-Sim0_1_2.dat
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 0.01
+Radius [m]: 0.01
+Uplink [Mbps]: 10
+Downlink [Mbps]: 0
+Uplink Efficiency   28.4606 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 2.84606
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 2.68515
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 5.53121
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-Sim0_2_1.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-Sim0_2_1.flowmon
+../../../spatial-reuse-SR-stats-Sim0_2_1.dat
+../../../spatial-reuse-operatorA-Sim0_2_1
+../../../spatial-reuse-positions-Sim0_2_1.csv
+../../../spatial-reuse-state-Sim0_2_1.dat
+../../../spatial-reuse-tgax-calibration-timings-Sim0_2_1.dat
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 2
+Distance between APs [m]: 0.01
+Radius [m]: 0.01
+Uplink [Mbps]: 10
+Downlink [Mbps]: 0
+Uplink Efficiency   26.0703 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 2.60703
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 2.63343
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 5.24046
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-Sim0_2_2.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-Sim0_2_2.flowmon
+../../../spatial-reuse-SR-stats-Sim0_2_2.dat
+../../../spatial-reuse-operatorA-Sim0_2_2
+../../../spatial-reuse-positions-Sim0_2_2.csv
+../../../spatial-reuse-state-Sim0_2_2.dat
+../../../spatial-reuse-tgax-calibration-timings-Sim0_2_2.dat
