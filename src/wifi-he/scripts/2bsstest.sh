@@ -5,7 +5,7 @@ cd ../examples
 # 2BSS test
 # miscellaneous settings for spatial-reuse script / ns-3
 export RngRun=1  #random number seed
-export duration=5  #Simulation duration in seconds
+export duration=10  #Simulation duration in seconds
 export enableRts=0   #RTS enabled (1) or disabled (0)
 export txStartOffset=50
 export enableObssPd=0
@@ -46,7 +46,7 @@ export useIdealWifiManager=0
 export MCS=8
 
 #Inter AP distance
-export d=7
+export d=5
 
 # Dropping radius r=10m
 export r=8
