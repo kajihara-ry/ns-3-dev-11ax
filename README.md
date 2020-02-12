@@ -1,4 +1,4 @@
-# The Network Simulator, Ver3
+# 11ac Multi-BSS Simulator 
 
 It contains a network simulator for research.
 
@@ -6,6 +6,8 @@ Location of files used for simulation
 →./ns3/src/wifi-he/src
 
 used file "2bsstest.sh"
+
+reference simulator:https://github.com/nsnam/ns-3-dev-git
 
 [ns-3 installation procedure(Ubuntu 16.04)]
 
