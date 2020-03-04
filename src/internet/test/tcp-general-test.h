@@ -24,7 +24,6 @@
 #include "ns3/tcp-socket-base.h"
 #include "ns3/tcp-congestion-ops.h"
 #include "ns3/tcp-recovery-ops.h"
-#include "ns3/tcp-rate-ops.h"
 #include "ns3/test.h"
 
 namespace ns3 {
@@ -592,12 +591,12 @@ protected:
   void SetInitialCwnd (SocketWho who, uint32_t initialCwnd);
 
   /**
-   * \brief Forcefully set the ecn use on
+   * \brief Forcefully set the ecn mode on
    *
    * \param who socket to force
-   * \param useEcn Mode of ECN. Currently Off and On are supported.
+   * \param ecnMode Mode of ECN. Currently NoEcn and ClassicEcn is supported.
    */
-  void SetUseEcn (SocketWho who, TcpSocketState::UseEcn_t useEcn);
+  void SetEcn (SocketWho who, TcpSocketBase::EcnMode_t ecnMode);
 
   /**
    * \brief Forcefully set the initial ssth
@@ -785,24 +784,6 @@ protected:
   {
     NS_UNUSED (oldValue);
     NS_UNUSED (newValue);
-  }
-
-  /**
-   * \brief Track the rate value of TcpRateLinux.
-   * \param rate updated value of TcpRate.
-   */
-  virtual void RateUpdatedTrace (const TcpRateLinux::TcpRateConnection &rate)
-  {
-    NS_UNUSED (rate);
-  }
-
-  /**
-   * \brief Track the rate sample value of TcpRateLinux.
-   * \param sample updated value of TcpRateSample.
-   */
-  virtual void RateSampleUpdatedTrace (const TcpRateLinux::TcpRateSample &sample)
-  {
-    NS_UNUSED (sample);
   }
 
   /**

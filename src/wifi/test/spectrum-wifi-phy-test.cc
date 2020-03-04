@@ -28,7 +28,6 @@
 #include "ns3/wifi-spectrum-signal-parameters.h"
 #include "ns3/wifi-phy-listener.h"
 #include "ns3/log.h"
-#include "ns3/wifi-phy-header.h"
 
 using namespace ns3;
 
@@ -75,15 +74,17 @@ protected:
    * Spectrum wifi receive success function
    * \param p the packet
    * \param snr the SNR
+   * \param rxPower the rx power (W)
    * \param txVector the transmit vector
    * \param statusPerMpdu reception status per MPDU
    */
-  void SpectrumWifiPhyRxSuccess (Ptr<Packet> p, double snr, WifiTxVector txVector, std::vector<bool> statusPerMpdu);
+  void SpectrumWifiPhyRxSuccess (Ptr<Packet> p, double snr, double rxPower, WifiTxVector txVector, std::vector<bool> statusPerMpdu);
   /**
    * Spectrum wifi receive failure function
    * \param p the packet
--   */
-  void SpectrumWifiPhyRxFailure (Ptr<Packet> p);
+   * \param snr the SNR
+   */
+  void SpectrumWifiPhyRxFailure (Ptr<Packet> p, double snr);
   uint32_t m_count; ///< count
 
 private:
@@ -106,7 +107,7 @@ SpectrumWifiPhyBasicTest::SpectrumWifiPhyBasicTest (std::string name)
 Ptr<SpectrumSignalParameters>
 SpectrumWifiPhyBasicTest::MakeSignal (double txPowerWatts)
 {
-  WifiTxVector txVector = WifiTxVector (WifiPhy::GetOfdmRate6Mbps (), 0, WIFI_PREAMBLE_LONG, 800, 1, 1, 0, 20, false, false);
+  WifiTxVector txVector = WifiTxVector (WifiPhy::GetOfdmRate6Mbps (), 0, WIFI_PREAMBLE_LONG, false, 1, 1, 0, 20, false, false);
 
   Ptr<Packet> pkt = Create<Packet> (1000);
   WifiMacHeader hdr;
@@ -144,16 +145,16 @@ SpectrumWifiPhyBasicTest::SendSignal (double txPowerWatts)
 }
 
 void
-SpectrumWifiPhyBasicTest::SpectrumWifiPhyRxSuccess (Ptr<Packet> p, double snr, WifiTxVector txVector, std::vector<bool> statusPerMpdu)
+SpectrumWifiPhyBasicTest::SpectrumWifiPhyRxSuccess (Ptr<Packet> p, double snr, double rxPower, WifiTxVector txVector, std::vector<bool> statusPerMpdu)
 {
-  NS_LOG_FUNCTION (this << p << snr << txVector);
+  NS_LOG_FUNCTION (this << p << snr << rxPower << txVector);
   m_count++;
 }
 
 void
-SpectrumWifiPhyBasicTest::SpectrumWifiPhyRxFailure (Ptr<Packet> p)
+SpectrumWifiPhyBasicTest::SpectrumWifiPhyRxFailure (Ptr<Packet> p, double snr)
 {
-  NS_LOG_FUNCTION (this << p);
+  NS_LOG_FUNCTION (this << p << snr);
   m_count++;
 }
 
@@ -326,7 +327,7 @@ public:
 };
 
 SpectrumWifiPhyTestSuite::SpectrumWifiPhyTestSuite ()
-  : TestSuite ("wifi-spectrum-wifi-phy", UNIT)
+  : TestSuite ("spectrum-wifi-phy", UNIT)
 {
   AddTestCase (new SpectrumWifiPhyBasicTest, TestCase::QUICK);
   AddTestCase (new SpectrumWifiPhyListenerTest, TestCase::QUICK);

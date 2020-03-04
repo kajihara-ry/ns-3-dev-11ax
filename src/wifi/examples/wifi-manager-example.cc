@@ -334,6 +334,7 @@ int main (int argc, char *argv[])
   Config::SetDefault ("ns3::MinstrelHtWifiManager::PrintStats", BooleanValue (true));
 
   WifiHelper wifi;
+  wifi.EnableLogComponents ();
   wifi.SetStandard (serverSelectedStandard.m_standard);
   YansWifiPhyHelper wifiPhy = YansWifiPhyHelper::Default ();
 

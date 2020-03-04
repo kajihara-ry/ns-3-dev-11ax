@@ -439,7 +439,7 @@ public:
 };
 
 TxDurationTestSuite::TxDurationTestSuite ()
-  : TestSuite ("wifi-devices-tx-duration", UNIT)
+  : TestSuite ("devices-wifi-tx-duration", UNIT)
 {
   AddTestCase (new TxDurationTest, TestCase::QUICK);
 }

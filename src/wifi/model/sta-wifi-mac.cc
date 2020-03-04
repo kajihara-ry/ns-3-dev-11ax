@@ -27,7 +27,7 @@
 #include "wifi-phy.h"
 #include "mac-low.h"
 #include "mgt-headers.h"
-#include "snr-tag.h"
+#include "wifi-rx-tag.h"
 #include "wifi-net-device.h"
 #include "ht-configuration.h"
 #include "he-configuration.h"
@@ -82,6 +82,10 @@ StaWifiMac::GetTypeId (void)
                      "Time of beacons arrival from associated AP",
                      MakeTraceSourceAccessor (&StaWifiMac::m_beaconArrival),
                      "ns3::Time::TracedCallback")
+    .AddTraceSource ("BeaconReception",
+                     "Trace source indicating the reception of a wifi beacon",
+                     MakeTraceSourceAccessor (&StaWifiMac::m_staWifiMacBeaconReceptionTrace),
+                     "ns3::StaWifiMac::BeaconReceptionTracedCallback")
   ;
   return tid;
 }
@@ -161,12 +165,12 @@ StaWifiMac::SendProbeRequest (void)
   MgtProbeRequestHeader probe;
   probe.SetSsid (GetSsid ());
   probe.SetSupportedRates (GetSupportedRates ());
-  if (GetHtSupported ())
+  if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
     {
       probe.SetExtendedCapabilities (GetExtendedCapabilities ());
       probe.SetHtCapabilities (GetHtCapabilities ());
     }
-  if (GetVhtSupported ())
+  if (GetVhtSupported () || GetHeSupported ())
     {
       probe.SetVhtCapabilities (GetVhtCapabilities ());
     }
@@ -202,12 +206,12 @@ StaWifiMac::SendAssociationRequest (bool isReassoc)
       assoc.SetSupportedRates (GetSupportedRates ());
       assoc.SetCapabilities (GetCapabilities ());
       assoc.SetListenInterval (0);
-      if (GetHtSupported ())
+      if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
         {
           assoc.SetExtendedCapabilities (GetExtendedCapabilities ());
           assoc.SetHtCapabilities (GetHtCapabilities ());
         }
-      if (GetVhtSupported ())
+      if (GetVhtSupported () || GetHeSupported ())
         {
           assoc.SetVhtCapabilities (GetVhtCapabilities ());
         }
@@ -225,12 +229,12 @@ StaWifiMac::SendAssociationRequest (bool isReassoc)
       reassoc.SetSupportedRates (GetSupportedRates ());
       reassoc.SetCapabilities (GetCapabilities ());
       reassoc.SetListenInterval (0);
-      if (GetHtSupported ())
+      if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
         {
           reassoc.SetExtendedCapabilities (GetExtendedCapabilities ());
           reassoc.SetHtCapabilities (GetHtCapabilities ());
         }
-      if (GetVhtSupported ())
+      if (GetVhtSupported () || GetHeSupported ())
         {
           reassoc.SetVhtCapabilities (GetVhtCapabilities ());
         }
@@ -470,9 +474,9 @@ StaWifiMac::Enqueue (Ptr<const Packet> packet, Mac48Address to)
     {
       hdr.SetType (WIFI_MAC_DATA);
     }
-  if (GetQosSupported ())
+  if (GetQosSupported () || GetHtSupported () || GetVhtSupported () || GetHeSupported ())
     {
-      hdr.SetNoOrder (); // explicitly set to 0 for the time being since HT control field is not yet implemented (set it to 1 when implemented)
+      hdr.SetNoOrder (); // explicitly set to 0 for the time being since HT/VHT/HE control field is not yet implemented (set it to 1 when implemented)
     }
 
   hdr.SetAddr1 (GetBssid ());
@@ -615,18 +619,28 @@ StaWifiMac::Receive (Ptr<Packet> packet, const WifiMacHeader *hdr)
           Time delay = MicroSeconds (beacon.GetBeaconIntervalUs () * m_maxMissedBeacons);
           RestartBeaconWatchdog (delay);
           UpdateApInfoFromBeacon (beacon, hdr->GetAddr2 (), hdr->GetAddr3 ());
+          WifiRxTag wifiRxTag;
+          bool removed = packet->RemovePacketTag (wifiRxTag);
+          if (removed && GetHeSupported ())
+            {
+              HeOperation heOperation = beacon.GetHeOperation ();
+              HeBeaconReceptionParameters params;
+              params.rssiW = wifiRxTag.GetRxPower ();
+              params.bssColor = heOperation.GetBssColor ();
+              NotifyBeaconReception (params);
+            }
         }
       if (goodBeacon && m_state == WAIT_BEACON)
         {
           NS_LOG_DEBUG ("Beacon received while scanning from " << hdr->GetAddr2 ());
-          SnrTag snrTag;
-          bool removed = packet->RemovePacketTag (snrTag);
+          WifiRxTag wifiRxTag;
+          bool removed = packet->RemovePacketTag (wifiRxTag);
           NS_ASSERT (removed);
           ApInfo apInfo;
           apInfo.m_apAddr = hdr->GetAddr2 ();
           apInfo.m_bssid = hdr->GetAddr3 ();
           apInfo.m_activeProbing = false;
-          apInfo.m_snr = snrTag.Get ();
+          apInfo.m_snr = wifiRxTag.GetSnr ();
           apInfo.m_beacon = beacon;
           UpdateCandidateApList (apInfo);
         }
@@ -644,14 +658,14 @@ StaWifiMac::Receive (Ptr<Packet> packet, const WifiMacHeader *hdr)
               NS_LOG_DEBUG ("Probe response is not for our SSID");
               return;
             }
-          SnrTag snrTag;
-          bool removed = packet->RemovePacketTag (snrTag);
+          WifiRxTag wifiRxTag;
+          bool removed = packet->RemovePacketTag (wifiRxTag);
           NS_ASSERT (removed);
           ApInfo apInfo;
           apInfo.m_apAddr = hdr->GetAddr2 ();
           apInfo.m_bssid = hdr->GetAddr3 ();
           apInfo.m_activeProbing = true;
-          apInfo.m_snr = snrTag.Get ();
+          apInfo.m_snr = wifiRxTag.GetSnr ();
           apInfo.m_probeResp = probeResp;
           UpdateCandidateApList (apInfo);
         }
@@ -833,7 +847,7 @@ StaWifiMac::UpdateApInfoFromBeacon (MgtBeaconHeader beacon, Mac48Address apAddr,
             }
         }
     }
-  if (GetHtSupported ())
+  if (GetHtSupported () || GetVhtSupported ())
     {
       ExtendedCapabilities extendedCapabilities = beacon.GetExtendedCapabilities ();
       //TODO: to be completed
@@ -841,17 +855,15 @@ StaWifiMac::UpdateApInfoFromBeacon (MgtBeaconHeader beacon, Mac48Address apAddr,
   if (GetHeSupported ())
     {
       HeCapabilities heCapabilities = beacon.GetHeCapabilities ();
-      if (heCapabilities.GetSupportedMcsAndNss () != 0)
+      //todo: once we support non constant rate managers, we should add checks here whether HE is supported by the peer
+      m_stationManager->AddStationHeCapabilities (apAddr, heCapabilities);
+      HeOperation heOperation = beacon.GetHeOperation ();
+      for (uint8_t i = 0; i < m_phy->GetNMcs (); i++)
         {
-          m_stationManager->AddStationHeCapabilities (apAddr, heCapabilities);
-          HeOperation heOperation = beacon.GetHeOperation ();
-          for (uint8_t i = 0; i < m_phy->GetNMcs (); i++)
+          WifiMode mcs = m_phy->GetMcs (i);
+          if (mcs.GetModulationClass () == WIFI_MOD_CLASS_HE && heCapabilities.IsSupportedRxMcs (mcs.GetMcsValue ()))
             {
-              WifiMode mcs = m_phy->GetMcs (i);
-              if (mcs.GetModulationClass () == WIFI_MOD_CLASS_HE && heCapabilities.IsSupportedRxMcs (mcs.GetMcsValue ()))
-                {
-                  m_stationManager->AddSupportedMcs (apAddr, mcs);
-                }
+              m_stationManager->AddSupportedMcs (apAddr, mcs);
             }
         }
     }
@@ -1029,12 +1041,11 @@ StaWifiMac::UpdateApInfoFromAssocResp (MgtAssocResponseHeader assocResp, Mac48Ad
   if (GetHeSupported ())
     {
       HeCapabilities hecapabilities = assocResp.GetHeCapabilities ();
-      if (hecapabilities.GetSupportedMcsAndNss () != 0)
-        {
-          m_stationManager->AddStationHeCapabilities (apAddr, hecapabilities);
-          HeOperation heOperation = assocResp.GetHeOperation ();
-          GetHeConfiguration ()->SetAttribute ("BssColor", UintegerValue (heOperation.GetBssColor ()));
-        }
+      //todo: once we support non constant rate managers, we should add checks here whether HE is supported by the peer
+      m_stationManager->AddStationHeCapabilities (apAddr, hecapabilities);
+      HeOperation heOperation = assocResp.GetHeOperation ();
+      NS_LOG_DEBUG ("Setting BSS color to " << heOperation.GetBssColor ());
+      GetHeConfiguration ()->SetAttribute ("BssColor", UintegerValue (heOperation.GetBssColor ()));
     }
   for (uint8_t i = 0; i < m_phy->GetNModes (); i++)
     {
@@ -1074,7 +1085,7 @@ StaWifiMac::UpdateApInfoFromAssocResp (MgtAssocResponseHeader assocResp, Mac48Ad
             }
         }
     }
-  if (GetHtSupported ())
+  if (GetHtSupported () || GetVhtSupported ())
     {
       ExtendedCapabilities extendedCapabilities = assocResp.GetExtendedCapabilities ();
       //TODO: to be completed
@@ -1105,7 +1116,7 @@ StaWifiMac::GetSupportedRates (void) const
       NS_LOG_DEBUG ("Adding supported rate of " << modeDataRate);
       rates.AddSupportedRate (modeDataRate);
     }
-  if (GetHtSupported ())
+  if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
     {
       for (uint8_t i = 0; i < m_phy->GetNBssMembershipSelectors (); i++)
         {
@@ -1164,6 +1175,12 @@ StaWifiMac::PhyCapabilitiesChanged (void)
       SetState (WAIT_ASSOC_RESP);
       SendAssociationRequest (true);
     }
+}
+
+void
+StaWifiMac::NotifyBeaconReception (HeBeaconReceptionParameters params)
+{
+  m_staWifiMacBeaconReceptionTrace (params);
 }
 
 } //namespace ns3

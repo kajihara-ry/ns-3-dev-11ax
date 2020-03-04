@@ -89,8 +89,6 @@
 #include <ns3/itu-umi-propagation-loss-model.h>
 #include <ns3/flow-monitor-module.h>
 #include <ns3/flow-monitor-helper.h>
-#include <bits/stdc++.h>
-
 
 using namespace ns3;
 
@@ -156,6 +154,7 @@ NetDeviceContainer staDevicesG;
 // for tracking packets and bytes received. will be reallocated once we finalize number of nodes
 std::vector<uint64_t> packetsReceived (0);
 std::vector<uint64_t> bytesReceived (0);
+std::vector<uint64_t> bytesTransmitted (0);
 
 std::vector<std::vector<uint64_t> > packetsReceivedPerNode;
 std::vector<std::vector<double> > rssiPerNode;
@@ -222,7 +221,19 @@ PacketTx (std::string context, Ptr<const Packet> packet, double txPowerW)
         }
     }
 }
-
+uint32_t
+Ipv4AddressToNodeId (Ipv4Address address)
+{
+std::stringstream address_str;
+address.Print(address_str);
+std::string sub = address_str.str().substr (10);
+uint32_t nodeId = atoi (sub.c_str ());
+if ((nodeId%(n+1))==0)
+{
+nodeId=(nodeId/(n+1)-1)*(n+1);
+}
+  return nodeId;
+}
 void
 PacketRx (std::string context, const Ptr<const Packet> p, const Address &srcAddress, const Address &destAddress)
 {
@@ -234,6 +245,13 @@ PacketRx (std::string context, const Ptr<const Packet> p, const Address &srcAddr
       packetsReceived[nodeId]++;
     }
   timeLastPacketReceived = Simulator::Now();
+
+uint32_t nodeId2= Ipv4AddressToNodeId(InetSocketAddress::ConvertFrom (srcAddress).GetIpv4 ());
+  if (!filterOutNonAddbaEstablished || allAddBaEstablished)
+    {
+      bytesTransmitted[nodeId2] += pktSize;
+    }
+
 }
 
 void
@@ -252,7 +270,6 @@ std::vector<SignalArrival> g_arrivals;
 double g_arrivalsDurationCounter = 0;
 std::ofstream g_stateFile;
 std::ofstream g_TGaxCalibrationTimingsFile;
-
 std::string
 StateToString (WifiPhyState state)
 {
@@ -346,6 +363,7 @@ void RxBlockAckCallback (std::string context, Ptr<const Packet> p, const WifiMac
   lastBlockAckDuration = blockAckDuration;
 
   lastRxBlockAckEnd = t_cp4;
+
 }
 
 void
@@ -453,6 +471,7 @@ AddbaStateCb (std::string context, Time t, Mac48Address recipient, uint8_t tid, 
           client->SetAttribute ("MaxPackets", UintegerValue (1));
         }
     }
+//std::cout<<"Addbacb"<<std::endl;
 }
 
 void
@@ -532,6 +551,8 @@ StaAssocCb (std::string context, Mac48Address bssid)
     }
 }
 
+
+
 void
 SignalCb (std::string context, bool wifi, uint32_t senderNodeId, double rxPowerDbm, Time rxDuration)
 {
@@ -553,6 +574,7 @@ SignalCb (std::string context, bool wifi, uint32_t senderNodeId, double rxPowerD
 
   packetsReceivedPerNode[nodeId][senderNodeId] += 1;
   rssiPerNode[nodeId][senderNodeId] += rxPowerDbm;
+//std::cout<<"Side "<<std::endl;
 }
 
 void
@@ -585,6 +607,19 @@ SaveSpectrumPhyStats (std::string filename, const std::vector<SignalArrival> &ar
   outFile.close ();
 }
 
+//##########################################################Display Backoff#############################################################################
+void
+CwTrace (std::string context, uint32_t oldVal, uint32_t newVal)
+{
+std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+}
+void
+BackoffTrace (std::string context, uint32_t newVal)
+{
+  std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+}
+
+//#######################################################################################################################################################
 void
 SchedulePhyLogConnect (void)
 {
@@ -596,6 +631,7 @@ SchedulePhyLogDisconnect (void)
 {
   Config::Disconnect ("/NodeList/*/DeviceList/*/$ns3::WifiNetDevice/Phy/$ns3::SpectrumWifiPhy/SignalArrival", MakeCallback (&SignalCb));
 }
+
 
 void
 ScheduleStateLogConnect (void)
@@ -803,12 +839,16 @@ SaveSpatialReuseStats (const std::string filename,
   outFile << "Total Throughput Downlink [Mbps] : " << tputApDownlinkTotal << std::endl;
   
   double rxThroughputPerNode[numNodes];
+  double txThroughputPerNode[numNodes];
   // output for all nodes
   for (uint32_t k = 0; k < numNodes; k++)
     {
       double bitsReceived = bytesReceived[k] * 8;
+      double bitsTransmitted = bytesTransmitted[k] * 8;
       rxThroughputPerNode[k] = static_cast<double> (bitsReceived) / 1e6 / duration;
+      txThroughputPerNode[k] = static_cast<double> (bitsTransmitted) / 1e6 / duration;
       outFile << "Node " << k << ", pkts " << packetsReceived[k] << ", bytes " << bytesReceived[k] << ", throughput [MMb/s] " << rxThroughputPerNode[k] << std::endl;
+      outFile << "Node " << k << ", bytes " << bytesTransmitted[k] << ", throughput [MMb/s] " << txThroughputPerNode[k] << std::endl;
     }
 
   outFile << "Avg. RSSI:" << std::endl;
@@ -1114,6 +1154,7 @@ main (int argc, char *argv[])
   uint32_t performTgaxTimingChecks = 0;
   // the scenario - should be one of: residential, enterprise, indoor, or outdoor
   std::string scenario ("residential");
+  std::string obssPdAlgorithm ("DynamicObssPdAlgorithm");
   std::string testname ("test");
 
   // local variables
@@ -1189,6 +1230,7 @@ main (int argc, char *argv[])
   cmd.AddValue ("obssPdThresholdBss7", "Energy threshold (dBm) for BSS 7 of received signal below which the PHY layer can avoid declaring CCA BUSY for inter-BSS frames.", obssPdThresholdBss7);
   cmd.AddValue ("checkTimings", "Perform TGax timings checks (for MAC simulation calibrations).", performTgaxTimingChecks);
   cmd.AddValue ("scenario", "The spatial-reuse scenario (residential, enterprise, indoor or outdoor).", scenario);
+  cmd.AddValue ("obssPdAlgorithm", "OBSS PD Algorithm (ConstantObssPdAlgorithm, DynamicObssPdAlgorithm).", obssPdAlgorithm);
   cmd.AddValue ("nBss", "The number of BSSs.", nBss);
   cmd.AddValue ("maxAmpduSizeBss1", "The maximum A-MPDU size for BSS 1 (bytes).", maxAmpduSizeBss1);
   cmd.AddValue ("maxAmpduSizeBss2", "The maximum A-MPDU size for BSS 2 (bytes).", maxAmpduSizeBss2);
@@ -1309,7 +1351,7 @@ main (int argc, char *argv[])
   // [MCS S0 ]
   // [0 0.7dB]
   // [1 3.7dB]
-  // [2 6.2dB]
+  // [2  6.2dB]
   // [3 9.3dB]
   // [4 12.6dB]
   // [5 16.8dB]
@@ -1429,6 +1471,7 @@ main (int argc, char *argv[])
   uint32_t numNodes = nBss * (n + 1);
   packetsReceived = std::vector<uint64_t> (numNodes);
   bytesReceived = std::vector<uint64_t> (numNodes);
+  bytesTransmitted = std::vector<uint64_t> (numNodes);
   nAssociatedStasPerBss = std::vector<uint32_t> (nBss * n);
 
   busyTime = std::vector<Time> (nBss);
@@ -1444,6 +1487,7 @@ main (int argc, char *argv[])
     {
       packetsReceived[nodeId] = 0;
       bytesReceived[nodeId] = 0;
+bytesTransmitted[nodeId] = 0;
     }
 
   // When logging, use prefixes
@@ -1592,15 +1636,14 @@ main (int argc, char *argv[])
   // handling of 'W=1 wall' and using the ItuUmitPropagationLossModel
   // for Test 4.
   uint64_t lossModelStream = 500;
- if (scenario == "logdistance")
+  if (scenario == "logdistance")
     {
-  Ptr<LogDistancePropagationLossModel> lossModel = CreateObject<LogDistancePropagationLossModel> ();
+   		Ptr<LogDistancePropagationLossModel> lossModel = CreateObject<LogDistancePropagationLossModel> ();
      // more prominent example values:
   lossModel ->SetAttribute ("ReferenceDistance", DoubleValue (1));
   lossModel ->SetAttribute ("Exponent", DoubleValue (3.5));
-  lossModel ->SetAttribute ("ReferenceLoss", DoubleValue (50));
-      spectrumChannel->AddPropagationLossModel (lossModel);  
-    } 
+ lossModel ->SetAttribute ("ReferenceLoss", DoubleValue (50));
+      spectrumChannel->AddPropagationLossModel (lossModel);    }
   else if (scenario == "residential")
     {
       Config::SetDefault ("ns3::Ieee80211axIndoorPropagationLossModel::DistanceBreakpoint", DoubleValue (5.0));
@@ -1721,10 +1764,13 @@ main (int argc, char *argv[])
   Ssid ssidA = Ssid ("A");
   if (enableObssPd)
     {
-      wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+      wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss1),
                                "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss1),
-                               "ObssPdLevel", DoubleValue (obssPdThresholdBss1));
+                               "ObssPdLevel", DoubleValue (obssPdThresholdBss1),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
     }
 
   mac.SetType ("ns3::StaWifiMac",
@@ -1780,10 +1826,13 @@ main (int argc, char *argv[])
       Ssid ssidB = Ssid ("B");
       if (enableObssPd)
         {
-          wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+          wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                    "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss2),
                                    "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss2),
-                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss2));
+                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss2),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
         }
 
       mac.SetType ("ns3::StaWifiMac",
@@ -1836,10 +1885,13 @@ main (int argc, char *argv[])
       Ssid ssidC = Ssid ("C");
       if (enableObssPd)
         {
-          wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+          wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                    "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss3),
                                    "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss3),
-                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss3));
+                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss3),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
         }
 
       mac.SetType ("ns3::StaWifiMac",
@@ -1892,10 +1944,13 @@ main (int argc, char *argv[])
       Ssid ssidD = Ssid ("D");
       if (enableObssPd)
         {
-          wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+          wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                    "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss4),
                                    "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss4),
-                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss4));
+                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss4),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
         }
 
       mac.SetType ("ns3::StaWifiMac",
@@ -1948,10 +2003,13 @@ main (int argc, char *argv[])
       Ssid ssidE = Ssid ("E");
       if (enableObssPd)
         {
-          wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+          wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                    "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss5),
                                    "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss5),
-                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss5));
+                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss5),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
         }
 
       mac.SetType ("ns3::StaWifiMac",
@@ -2004,10 +2062,13 @@ main (int argc, char *argv[])
       Ssid ssidF = Ssid ("F");
       if (enableObssPd)
         {
-          wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+          wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                    "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss6),
                                    "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss6),
-                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss6));
+                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss6),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
         }
 
       mac.SetType ("ns3::StaWifiMac",
@@ -2059,10 +2120,13 @@ main (int argc, char *argv[])
       Ssid ssidG = Ssid ("G");
       if (enableObssPd)
         {
-          wifi.SetObssPdAlgorithm ("ns3::ConstantObssPdAlgorithm",
+          wifi.SetObssPdAlgorithm ("ns3::"+obssPdAlgorithm,
                                    "ObssPdLevelMin", DoubleValue (obssPdThresholdMinBss7),
                                    "ObssPdLevelMax", DoubleValue (obssPdThresholdMaxBss7),
-                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss7));
+                                   "ObssPdLevel", DoubleValue (obssPdThresholdBss7),
+                               "d",DoubleValue (d),
+                                 "r",DoubleValue (r),
+                                "mcs",UintegerValue(mcs));
         }
 
       mac.SetType ("ns3::StaWifiMac",
@@ -2391,74 +2455,118 @@ main (int argc, char *argv[])
       mobility.SetPositionAllocator (positionAlloc);
       mobility.Install (allNodes);
     }
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-//----------------------senario=logdistance-----------------------------------------------------------------------------
-  else //APの配置の仕組み(4BSSまで配置が決まっている)
+  else
     {
+
+      double x1 = 0.0;
+      double y1 = 0.0;
+      double theta = 0.0;  // radians
+      double x2 = d * cos(theta);
+      double y2 = d * sin(theta);
+      theta += 60.0 / 360.0 * 2.0 * M_PI;
+      double x3 = d * cos(theta);
+      double y3 = d * sin(theta);
+      theta += 60.0 / 360.0 * 2.0 * M_PI;
+      double x4 = d * cos(theta);
+      double y4 = d * sin(theta);
+      theta += 60.0 / 360.0 * 2.0 * M_PI;
+      double x5 = d * cos(theta);
+      double y5 = d * sin(theta);
+      theta += 60.0 / 360.0 * 2.0 * M_PI;
+      double x6 = d * cos(theta);
+      double y6 = d * sin(theta);
+      theta += 60.0 / 360.0 * 2.0 * M_PI;
+      double x7 = d * cos(theta);
+      double y7 = d * sin(theta);
+
       // "A" - APs
-      positionOutFile << 0.0 << ", " << 0.0 << ", " << r << ", " << csr << std::endl; //x座標,y座標,半径r,csrをOutする
+      positionOutFile << x1 << ", " << y1 << ", " << r << ", " << csr << std::endl;
       positionOutFile << std::endl;
       positionOutFile << std::endl;
-
+      if (nBss >= 2)
+        {
       // "B" - APs
-      positionOutFile << d << ", " << 0.0 << ", " << r << ", " << csr << std::endl;
+      positionOutFile << x2 << ", " << y2 << ", " << r << ", " << csr << std::endl;
       positionOutFile << std::endl;
       positionOutFile << std::endl;
-
+        }
+      if (nBss >= 3)
+        {
       // "C" - APs
-      positionOutFile << 0.0 << ", " << -d << ", " << r << ", " << csr << std::endl;
+      positionOutFile << x3 << ", " << y3 << ", " << r << ", " << csr << std::endl;
       positionOutFile << std::endl;
       positionOutFile << std::endl;
-
+        }
+      if (nBss >= 4)
+        {
       // "D" - APs
-      positionOutFile << d << ", " << -d << ", " << r << ", " << csr << std::endl;
+      positionOutFile << x4 << ", " << y4 << ", " << r << ", " << csr << std::endl;
       positionOutFile << std::endl;
       positionOutFile << std::endl;
+        }
+      if (nBss >= 5)
+        {
+      // "E" - APs
+      positionOutFile << x5 << ", " << y5 << ", " << r << ", " << csr << std::endl;
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+        }
+      if (nBss >= 6)
+        {
+      // "F" - APs
+      positionOutFile << x6 << ", " << y6 << ", " << r << ", " << csr << std::endl;
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+        }
+      if (nBss >= 7)
+        {
+      // "G" - APs
+      positionOutFile << x7 << ", " << y7 << ", " << r << ", " << csr << std::endl;
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+        }
 
-//---------------------------------------各BSSのSTAの配置--------------------------------------------------------
+
       // Network "A"
       // AP1
-      positionAlloc->Add (Vector (0.0, 0.0, 0.0)); //Vector(x座標,y座標,?) 1つめのAPは原点に配置
+      positionAlloc->Add (Vector (0.0, 0.0, 0.0));
       // STAs for AP1
-      // STAs for each AP are allocated using a different instance of a UnitDiscPositionAllocation.  To
+      // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
       // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
-      //訳：ランダム性の確保のため、unitDiscPositionAllocator1のように各BSSで別のものを用意する
       Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator1 = CreateObject<UniformDiscPositionAllocator> ();
       unitDiscPositionAllocator1->AssignStreams (streamNumber);
       // AP1 is at origin (x=0, y=0), with radius Rho=r
-      //positionAllocのイメージ→ [0]=APの配置,[1]=属するSTA1の配置,[2]=STA2,[3]=3,[4]=4,.....(STAの配置はfor文でn回分)
-      unitDiscPositionAllocator1->SetX (0); //以下3行はAP1の配置
+      unitDiscPositionAllocator1->SetX (0);
       unitDiscPositionAllocator1->SetY (0);
       unitDiscPositionAllocator1->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-          Vector v = unitDiscPositionAllocator1->GetNext (); //ここを直接配置場所にする
+          Vector v = unitDiscPositionAllocator1->GetNext ();
           positionAlloc->Add (v);
           positionOutFile << v.x << ", " << v.y << std::endl;
         }
       positionOutFile << std::endl;
       positionOutFile << std::endl;
-
-      if (nBss >= 2)
+      if(nBss>=2)
         {
-          // Network "B"
-          // AP2
-          positionAlloc->Add (Vector (d, 0.0, 0.0)); //2つめはAP1とx座標にd離れた位置
-          // STAs for AP2
-          Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator2 = CreateObject<UniformDiscPositionAllocator> ();
-          // see comments above - each allocator must have unique stream number.
-          unitDiscPositionAllocator2->AssignStreams (streamNumber + 1);
-          // AP2 is at (x=d, y=0), with radius Rho=r
-          unitDiscPositionAllocator2->SetX (d);
-          unitDiscPositionAllocator2->SetY (0);
-          unitDiscPositionAllocator2->SetRho (r);
-          for (uint32_t i = 0; i < n; i++)
-            {
-              Vector v = unitDiscPositionAllocator2->GetNext ();
-                positionAlloc->Add (v);
-                positionOutFile << v.x << ", " << v.y << std::endl;
-                
-            }
+                // Network "B"
+                // AP2
+                positionAlloc->Add (Vector (x2, y2, 0.0));
+                // STAs for AP2
+                // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+                // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+                Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator2 = CreateObject<UniformDiscPositionAllocator> ();
+                unitDiscPositionAllocator2->AssignStreams (streamNumber + 1);
+                // AP1 is at origin (x=x2, y=y2), with radius Rho=r
+                 unitDiscPositionAllocator2->SetX (x2);
+                unitDiscPositionAllocator2->SetY (y2);
+                unitDiscPositionAllocator2->SetRho (r);
+                for (uint32_t i = 0; i < n; i++)
+                        {
+                         Vector v = unitDiscPositionAllocator2->GetNext ();
+                        positionAlloc->Add (v);
+                        positionOutFile << v.x << ", " << v.y << std::endl;
+                        }
         }
       else
         {
@@ -2466,66 +2574,162 @@ main (int argc, char *argv[])
           // since the post-processnig script expects there to be something here.
           positionOutFile << d << ", " << 0 << std::endl;
         }
-
       positionOutFile << std::endl;
       positionOutFile << std::endl;
 
-      if (nBss >= 3)
+      if(nBss>=3)
         {
-          // Network "C"
-          // AP3
-          positionAlloc->Add (Vector (0.0, -d, 0.0));
-          // STAs for AP3
-          Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator3 = CreateObject<UniformDiscPositionAllocator> ();
-          // see comments above - each allocator must have unique stream number.
-          unitDiscPositionAllocator3->AssignStreams (streamNumber + 2);
-          // AP3 is at (x=0, y=-d), with radius Rho=r
-          unitDiscPositionAllocator3->SetX (0);
-          unitDiscPositionAllocator3->SetY (-d);
-          unitDiscPositionAllocator3->SetRho (r);
-          for (uint32_t i = 0; i < n; i++)
-            {
-              Vector v = unitDiscPositionAllocator3->GetNext ();
-              positionAlloc->Add (v);
-              positionOutFile << v.x << ", " << v.y << std::endl;
-            }
+      // Network "C"
+      // AP3
+      positionAlloc->Add (Vector (x3, y3, 0.0));
+      // STAs for AP3
+      // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+      // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+      Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator3 = CreateObject<UniformDiscPositionAllocator> ();
+      unitDiscPositionAllocator3->AssignStreams (streamNumber + 2);
+      // AP1 is at origin (x=x3, y=y3), with radius Rho=r
+      unitDiscPositionAllocator3->SetX (x3);
+      unitDiscPositionAllocator3->SetY (y3);
+      unitDiscPositionAllocator3->SetRho (r);
+      for (uint32_t i = 0; i < n; i++)
+        {
+          Vector v = unitDiscPositionAllocator3->GetNext ();
+          positionAlloc->Add (v);
+          positionOutFile << v.x << ", " << v.y << std::endl;
+        }
         }
       else
         {
           // need to output something here to represent the positions section for STAs C
           // since the post-processnig script expects there to be something here.
-          positionOutFile << 0 << ", " << -d << std::endl;
+          positionOutFile << d << ", " << 0 << std::endl;
         }
-
       positionOutFile << std::endl;
       positionOutFile << std::endl;
 
-      if (nBss >= 4)
+      if(nBss>=4)
         {
-          // Network "D"
-          // AP4
-          positionAlloc->Add (Vector (d, -d, 0.0));
-          // STAs for AP4
-          Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator4 = CreateObject<UniformDiscPositionAllocator> ();
-          // see comments above - each allocator must have unique stream number.
-          unitDiscPositionAllocator4->AssignStreams (streamNumber + 3);
-          // AP3 is at (x=0, y=-d), with radius Rho=r
-          unitDiscPositionAllocator4->SetX (d);
-          unitDiscPositionAllocator4->SetY (-d);
-          unitDiscPositionAllocator4->SetRho (r);
-          for (uint32_t i = 0; i < n; i++)
-            {
-              Vector v = unitDiscPositionAllocator4->GetNext ();
-              positionAlloc->Add (v);
-              positionOutFile << v.x << ", " << v.y << std::endl;
-            }
+      // Network "D"
+      // AP4
+      positionAlloc->Add (Vector (x4, y4, 0.0));
+      // STAs for AP4
+      // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+      // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+      Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator4 = CreateObject<UniformDiscPositionAllocator> ();
+      unitDiscPositionAllocator4->AssignStreams (streamNumber + 3);
+      // AP1 is at origin (x=x4, y=y4), with radius Rho=r
+      unitDiscPositionAllocator4->SetX (x4);
+      unitDiscPositionAllocator4->SetY (y4);
+      unitDiscPositionAllocator4->SetRho (r);
+      for (uint32_t i = 0; i < n; i++)
+        {
+          Vector v = unitDiscPositionAllocator4->GetNext ();
+          positionAlloc->Add (v);
+          positionOutFile << v.x << ", " << v.y << std::endl;
+        }
         }
       else
         {
-          // need to output something here to represent the positions section for STAs B
+          // need to output something here to represent the positions section for STAs D
           // since the post-processnig script expects there to be something here.
-          positionOutFile << d << ", " << -d << std::endl;
+          positionOutFile << d << ", " << 0 << std::endl;
         }
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+
+
+      if(nBss>=5)
+        {
+    // Network "E"
+      // AP5
+      positionAlloc->Add (Vector (x5, y5, 0.0));
+      // STAs for AP5
+      // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+      // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+      Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator5 = CreateObject<UniformDiscPositionAllocator> ();
+      unitDiscPositionAllocator5->AssignStreams (streamNumber + 4);
+      // AP1 is at origin (x=x5, y=y5), with radius Rho=r
+      unitDiscPositionAllocator5->SetX (x5);
+      unitDiscPositionAllocator5->SetY (y5);
+      unitDiscPositionAllocator5->SetRho (r);
+      for (uint32_t i = 0; i < n; i++)
+        {
+          Vector v = unitDiscPositionAllocator5->GetNext ();
+          positionAlloc->Add (v);
+          positionOutFile << v.x << ", " << v.y << std::endl;
+        }
+        }
+      else
+        {
+          // need to output something here to represent the positions section for STAs E
+          // since the post-processnig script expects there to be something here.
+          positionOutFile << d << ", " << 0 << std::endl;
+        }
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+
+
+      if(nBss>=6)
+        {
+      // Network "F"
+      // AP6
+      positionAlloc->Add (Vector (x6, y6, 0.0));
+      // STAs for AP6
+      // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+      // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+      Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator6 = CreateObject<UniformDiscPositionAllocator> ();
+      unitDiscPositionAllocator6->AssignStreams (streamNumber + 5);
+      // AP1 is at origin (x=x6, y=y6), with radius Rho=r
+      unitDiscPositionAllocator6->SetX (x6);
+      unitDiscPositionAllocator6->SetY (y6);
+      unitDiscPositionAllocator6->SetRho (r);
+      for (uint32_t i = 0; i < n; i++)
+        {
+          Vector v = unitDiscPositionAllocator6->GetNext ();
+          positionAlloc->Add (v);
+          positionOutFile << v.x << ", " << v.y << std::endl;
+        }
+        }
+      else
+        {
+          // need to output something here to represent the positions section for STAs F
+          // since the post-processnig script expects there to be something here.
+          positionOutFile << d << ", " << 0 << std::endl;
+        }
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+
+
+      if(nBss>=7)
+        {
+      // Network "G"
+      // AP7
+      positionAlloc->Add (Vector (x7, y7, 0.0));
+      // STAs for AP7
+      // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+      // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+      Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator7 = CreateObject<UniformDiscPositionAllocator> ();
+      unitDiscPositionAllocator7->AssignStreams (streamNumber + 6);
+      // AP1 is at origin (x=x7, y=y7), with radius Rho=r
+      unitDiscPositionAllocator7->SetX (x7);
+      unitDiscPositionAllocator7->SetY (y7);
+      unitDiscPositionAllocator7->SetRho (r);
+      for (uint32_t i = 0; i < n; i++)
+        {
+          Vector v = unitDiscPositionAllocator7->GetNext ();
+          positionAlloc->Add (v);
+          positionOutFile << v.x << ", " << v.y << std::endl;
+        }
+        }
+      else
+        {
+          // need to output something here to represent the positions section for STAs G
+          // since the post-processnig script expects there to be something here.
+          positionOutFile << d << ", " << 0 << std::endl;
+        }
+      positionOutFile << std::endl;
+      positionOutFile << std::endl;
+
 
       mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
       mobility.SetPositionAllocator (positionAlloc);
@@ -2534,7 +2738,7 @@ main (int argc, char *argv[])
 
   positionOutFile << std::endl;
   positionOutFile.close ();
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   double perNodeUplinkMbps = aggregateUplinkMbps / n;
   double perNodeDownlinkMbps = aggregateDownlinkMbps / n;
   Time intervalUplink = MicroSeconds (payloadSizeUplink * 8 / perNodeUplinkMbps);
@@ -2870,6 +3074,10 @@ main (int argc, char *argv[])
   ScheduleAddbaStateLogConnect ();
   ScheduleStaAssocLogConnect();
 
+
+      // Trace backoff evolution
+Config::Connect ("/NodeList/*/DeviceList/*/$ns3::WifiNetDevice/Mac/$ns3::RegularWifiMac/BE_Txop/BackoffTrace", MakeCallback (&BackoffTrace));
+Config::Connect ("/NodeList/*/DeviceList/*/$ns3::WifiNetDevice/Mac/$ns3::RegularWifiMac/BE_Txop/CwTrace", MakeCallback (&CwTrace));
   g_rxSniffFile.open (outputFilePrefix + "-rx-sniff-" + testname + ".dat", std::ofstream::out | std::ofstream::trunc);
   g_rxSniffFile.setf (std::ios_base::fixed);
   g_rxSniffFile << "RxNodeId, DstNodeId, SrcNodeId, RxNodeAddr, DA, SA, Noise, Signal " << std::endl;
@@ -2900,6 +3108,8 @@ main (int argc, char *argv[])
       spectrumPhy.EnablePcap ("STA_pcap", staDevicesA);
       spectrumPhy.EnablePcap ("AP_pcap", apDeviceA);
     }
+      // Trace CW evolution
+    
 
   if (disableArp)
     {
@@ -2914,6 +3124,8 @@ main (int argc, char *argv[])
   ScheduleStateLogDisconnect ();
   ScheduleAddbaStateLogDisconnect ();
   ScheduleStaAssocLogDisconnect();
+Config::Disconnect ("/NodeList/*/DeviceList/*/$ns3::WifiNetDevice/Mac/$ns3::RegularWifiMac/BE_Txop/BackoffTrace", MakeCallback (&BackoffTrace));
+Config::Disconnect ("/NodeList/*/DeviceList/*/$ns3::WifiNetDevice/Mac/$ns3::RegularWifiMac/BE_Txop/CwTrace", MakeCallback (&CwTrace));
   g_stateFile.flush ();
   g_stateFile.close ();
 

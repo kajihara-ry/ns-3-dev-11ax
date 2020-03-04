@@ -108,12 +108,20 @@ def dist_hook():
 
 # Print the sorted list of module names in columns.
 def print_module_names(names):
-    """Print the list of module names in 3 columns."""
-    for i, name in enumerate(sorted(names)):
-        if i % 3 == 2 or i == len(names) - 1:
-          print(name)
-        else:
-          print(name.ljust(25), end=' ')
+    # Sort the list of module names.
+    names.sort()
+
+    # Print the list of module names in 3 columns.
+    i = 1
+    for name in names:
+        print(name.ljust(25), end=' ')
+        if i == 3:
+                print()
+                i = 0
+        i = i+1
+
+    if i != 1:
+        print()
 
 # return types of some APIs differ in Python 2/3 (type string vs class bytes)
 # This method will decode('utf-8') a byte object in Python 3, 
@@ -162,15 +170,9 @@ def options(opt):
 
     opt.add_option('--lcov-report',
                    help=('Generate a code coverage report '
-                         '(use this option after configuring with --enable-gcov and running a program)'),
+                         '(use this option at build time, not in configure)'),
                    action="store_true", default=False,
                    dest='lcov_report')
-
-    opt.add_option('--lcov-zerocounters',
-                   help=('Zero the lcov counters'
-                         '(use this option before rerunning a program, when generating repeated lcov reports)'),
-                   action="store_true", default=False,
-                   dest='lcov_zerocounters')
 
     opt.add_option('--run',
                    help=('Run a locally built program; argument can be a program name,'
@@ -638,7 +640,7 @@ def configure(conf):
                                  conf.env['ENABLE_GSL'],
                                  "GSL not found")
 
-    conf.find_program('libgcrypt-config', var='LIBGCRYPT_CONFIG', msg="libgcrypt-config", mandatory=False)
+    conf.find_program('libgcrypt-config', var='LIBGCRYPT_CONFIG', msg="python-config", mandatory=False)
     if env.LIBGCRYPT_CONFIG:
         conf.check_cfg(path=env.LIBGCRYPT_CONFIG, msg="Checking for libgcrypt", args='--cflags --libs', package='',
                                      define_name="HAVE_GCRYPT", global_define=True, uselib_store='GCRYPT', mandatory=False)
@@ -1126,7 +1128,7 @@ def shutdown(ctx):
     # Write the build status file.
     build_status_file = os.path.join(bld.out_dir, 'build-status.py')
     out = open(build_status_file, 'w')
-    out.write('#! /usr/bin/env python3\n')
+    out.write('#! /usr/bin/env python\n')
     out.write('\n')
     out.write('# Programs that are runnable.\n')
     out.write('ns3_runnable_programs = ' + str(env['NS3_RUNNABLE_PROGRAMS']) + '\n')
@@ -1138,9 +1140,6 @@ def shutdown(ctx):
 
     if Options.options.lcov_report:
         lcov_report(bld)
-
-    if Options.options.lcov_zerocounters:
-        lcov_zerocounters(bld)
 
     if Options.options.run:
         wutils.run_program(Options.options.run, env, wutils.get_command_template(env),
@@ -1322,20 +1321,7 @@ def lcov_report(bld):
     if not env['GCOV_ENABLED']:
         raise WafError("project not configured for code coverage;"
                        " reconfigure with --enable-gcov")
-    try:
-        subprocess.call(["lcov", "--help"], stdout=subprocess.DEVNULL)
-    except OSError as e:
-        if e.errno == os.errno.ENOENT:
-            raise WafError("Error: lcov program not found")
-        else:
-            raise
-    try:
-        subprocess.call(["genhtml", "--help"], stdout=subprocess.DEVNULL)
-    except OSError as e:
-        if e.errno == os.errno.ENOENT:
-            raise WafError("Error: genhtml program not found")
-        else:
-            raise
+
     os.chdir(out)
     try:
         lcov_report_dir = 'lcov-report'
@@ -1346,34 +1332,15 @@ def lcov_report(bld):
             raise SystemExit(1)
 
         info_file = os.path.join(lcov_report_dir, 'report.info')
-        lcov_command = "lcov -c -d . -o " + info_file
+        lcov_command = "../utils/lcov/lcov -c -d . -o " + info_file
         lcov_command += " -b " + os.getcwd()
         if subprocess.Popen(lcov_command, shell=True).wait():
             raise SystemExit(1)
 
-        genhtml_command = "genhtml -o " + lcov_report_dir
+        genhtml_command = "../utils/lcov/genhtml -o " + lcov_report_dir
         genhtml_command += " " + info_file
         if subprocess.Popen(genhtml_command, shell=True).wait():
             raise SystemExit(1)
     finally:
         os.chdir("..")
 
-def lcov_zerocounters(bld):
-    env = bld.env
-
-    if not env['GCOV_ENABLED']:
-        raise WafError("project not configured for code coverage;"
-                       " reconfigure with --enable-gcov")
-    try:
-        subprocess.call(["lcov", "--help"], stdout=subprocess.DEVNULL)
-    except OSError as e:
-        if e.errno == os.errno.ENOENT:
-            raise WafError("Error: lcov program not found")
-        else:
-            raise
-
-    os.chdir(out)
-    lcov_clear_command = "lcov -d . --zerocounters"
-    if subprocess.Popen(lcov_clear_command, shell=True).wait():
-        raise SystemExit(1)
-    os.chdir("..")

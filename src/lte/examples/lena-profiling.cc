@@ -193,6 +193,8 @@ main (int argc, char *argv[])
     }
 
 
+  BuildingsHelper::MakeMobilityModelConsistent ();
+
   Simulator::Stop (Seconds (simTime));
   lteHelper->EnableTraces ();
 

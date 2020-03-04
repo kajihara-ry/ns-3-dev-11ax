@@ -7,8 +7,6 @@ References
 
 .. [ieee80211] IEEE Std 802.11-2012, *Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications*
 
-.. [ieee80211-2016] IEEE Std 802.11-2016, *Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications*
-
 .. [pei80211b] \G. Pei and Tom Henderson, `Validation of ns-3 802.11b PHY model <http://www.nsnam.org/~pei/80211b.pdf>`__ 
 
 .. [pei80211ofdm] \G. Pei and Tom Henderson, `Validation of OFDM error rate model in ns-3 <http://www.nsnam.org/~pei/80211ofdm.pdf>`__ 
@@ -47,4 +45,3 @@ References
 
 .. [baldo2010] \ N. Baldo et al., "Validation of the ns-3 IEEE 802.11 model using the EXTREME testbed", Proceedings of SIMUTools Conference, March 2010.
 
-.. [lanante2019] \ L. Lanante Jr. et al., "Improved Abstraction for Clear Channel Assessment in ns-3 802.11 WLAN Model", Proceedings of the 2019 Workshop on ns-3, June 2019.

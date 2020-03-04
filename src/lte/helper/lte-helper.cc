@@ -551,16 +551,19 @@ LteHelper::InstallSingleEnbDevice (Ptr<Node> n)
       ulPhy->SetHarqPhyModule (harq);
       phy->SetHarqPhyModule (harq);
 
-      Ptr<LteChunkProcessor> pCtrl = Create<LteChunkProcessor> ();
+      Ptr<LteAverageChunkProcessor> pCtrl = Create<LteAverageChunkProcessor> ();
       pCtrl->AddCallback (MakeCallback (&LteEnbPhy::GenerateCtrlCqiReport, phy));
       ulPhy->AddCtrlSinrChunkProcessor (pCtrl);   // for evaluating SRS UL-CQI
 
-      Ptr<LteChunkProcessor> pData = Create<LteChunkProcessor> ();
-      pData->AddCallback (MakeCallback (&LteEnbPhy::GenerateDataCqiReport, phy));
+      Ptr<LteListChunkProcessor> pData = Create<LteListChunkProcessor> ();
       pData->AddCallback (MakeCallback (&LteSpectrumPhy::UpdateSinrPerceived, ulPhy));
-      ulPhy->AddDataSinrChunkProcessor (pData);   // for evaluating PUSCH UL-CQI
+      ulPhy->AddDataSinrChunkProcessor (pData);   // for evaluating the PUSCH error model
 
-      Ptr<LteChunkProcessor> pInterf = Create<LteChunkProcessor> ();
+      Ptr<LteAverageChunkProcessor> pCqi = Create<LteAverageChunkProcessor> ();
+      pCqi->AddCallback (MakeCallback (&LteEnbPhy::GenerateDataCqiReport, phy));
+      ulPhy->AddDataSinrChunkProcessor (pCqi); // for evaluating PUSCH UL-CQI
+
+      Ptr<LteAverageChunkProcessor> pInterf = Create<LteAverageChunkProcessor> ();
       pInterf->AddCallback (MakeCallback (&LteEnbPhy::ReportInterference, phy));
       ulPhy->AddInterferenceDataChunkProcessor (pInterf);   // for interference power tracing
 
@@ -709,7 +712,7 @@ LteHelper::InstallSingleEnbDevice (Ptr<Node> n)
       ccPhy->GetDlSpectrumPhy ()->SetDevice (dev);
       ccPhy->GetUlSpectrumPhy ()->SetLtePhyRxDataEndOkCallback (MakeCallback (&LteEnbPhy::PhyPduReceived, ccPhy));
       ccPhy->GetUlSpectrumPhy ()->SetLtePhyRxCtrlEndOkCallback (MakeCallback (&LteEnbPhy::ReceiveLteControlMessageList, ccPhy));
-      ccPhy->GetUlSpectrumPhy ()->SetLtePhyUlHarqFeedbackCallback (MakeCallback (&LteEnbPhy::ReportUlHarqFeedback, ccPhy));
+      ccPhy->GetUlSpectrumPhy ()->SetLtePhyUlHarqFeedbackCallback (MakeCallback (&LteEnbPhy::ReceiveLteUlHarqFeedback, ccPhy));
       NS_LOG_LOGIC ("set the propagation model frequencies");
       double dlFreq = LteSpectrumValueHelper::GetCarrierFrequency (it->second->m_dlEarfcn);
       NS_LOG_LOGIC ("DL freq: " << dlFreq);
@@ -807,36 +810,42 @@ LteHelper::InstallSingleUeDevice (Ptr<Node> n)
       ulPhy->SetHarqPhyModule (harq);
       phy->SetHarqPhyModule (harq);
 
-      Ptr<LteChunkProcessor> pRs = Create<LteChunkProcessor> ();
+      Ptr<LteAverageChunkProcessor> pRs = Create<LteAverageChunkProcessor> ();
       pRs->AddCallback (MakeCallback (&LteUePhy::ReportRsReceivedPower, phy));
       dlPhy->AddRsPowerChunkProcessor (pRs);
 
-      Ptr<LteChunkProcessor> pInterf = Create<LteChunkProcessor> ();
+      Ptr<LteAverageChunkProcessor> pInterf = Create<LteAverageChunkProcessor> ();
       pInterf->AddCallback (MakeCallback (&LteUePhy::ReportInterference, phy));
       dlPhy->AddInterferenceCtrlChunkProcessor (pInterf);   // for RSRQ evaluation of UE Measurements
 
-      Ptr<LteChunkProcessor> pCtrl = Create<LteChunkProcessor> ();
+      Ptr<LteListChunkProcessor> pCtrl = Create<LteListChunkProcessor> ();
       pCtrl->AddCallback (MakeCallback (&LteSpectrumPhy::UpdateSinrPerceived, dlPhy));
       dlPhy->AddCtrlSinrChunkProcessor (pCtrl);
 
-      Ptr<LteChunkProcessor> pData = Create<LteChunkProcessor> ();
+      Ptr<LteListChunkProcessor> pData = Create<LteListChunkProcessor> ();
       pData->AddCallback (MakeCallback (&LteSpectrumPhy::UpdateSinrPerceived, dlPhy));
       dlPhy->AddDataSinrChunkProcessor (pData);
+
+      Ptr<LteAverageChunkProcessor> pCqi = Create<LteAverageChunkProcessor> ();
+      dlPhy->AddCtrlSinrChunkProcessor (pCqi);
 
       if (m_usePdschForCqiGeneration)
         {
           // CQI calculation based on PDCCH for signal and PDSCH for interference
           //NOTE: Change in pCtrl chunk processor could impact the RLF detection
           //since it is based on CTRL SINR.
-          pCtrl->AddCallback (MakeCallback (&LteUePhy::GenerateMixedCqiReport, phy));
-          Ptr<LteChunkProcessor> pDataInterf = Create<LteChunkProcessor> ();
+          //TODO: merge issue to be fixed!
+          //pCtrl->AddCallback (MakeCallback (&LteUePhy::GenerateMixedCqiReport, phy));
+          //Ptr<LteChunkProcessor> pDataInterf = Create<LteChunkProcessor> ();
+          pCqi->AddCallback (MakeCallback (&LteUePhy::GenerateMixedCqiReport, phy));
+          Ptr<LteAverageChunkProcessor> pDataInterf = Create<LteAverageChunkProcessor> ();
           pDataInterf->AddCallback (MakeCallback (&LteUePhy::ReportDataInterference, phy));
           dlPhy->AddInterferenceDataChunkProcessor (pDataInterf);
         }
       else
         {
           // CQI calculation based on PDCCH for both signal and interference
-          pCtrl->AddCallback (MakeCallback (&LteUePhy::GenerateCtrlCqiReport, phy));
+          pCqi->AddCallback (MakeCallback (&LteUePhy::GenerateCtrlCqiReport, phy));
         }
 
       dlPhy->SetChannel (m_downlinkChannel);
@@ -937,7 +946,7 @@ LteHelper::InstallSingleUeDevice (Ptr<Node> n)
       ccPhy->GetDlSpectrumPhy ()->SetLtePhyRxDataEndOkCallback (MakeCallback (&LteUePhy::PhyPduReceived, ccPhy));
       ccPhy->GetDlSpectrumPhy ()->SetLtePhyRxCtrlEndOkCallback (MakeCallback (&LteUePhy::ReceiveLteControlMessageList, ccPhy));
       ccPhy->GetDlSpectrumPhy ()->SetLtePhyRxPssCallback (MakeCallback (&LteUePhy::ReceivePss, ccPhy));
-      ccPhy->GetDlSpectrumPhy ()->SetLtePhyDlHarqFeedbackCallback (MakeCallback (&LteUePhy::EnqueueDlHarqFeedback, ccPhy));
+      ccPhy->GetDlSpectrumPhy ()->SetLtePhyDlHarqFeedbackCallback (MakeCallback (&LteUePhy::ReceiveLteDlHarqFeedback, ccPhy));
     }
 
   nas->SetDevice (dev);
@@ -1335,9 +1344,8 @@ LteHelper::EnableLogComponents (void)
   LogComponentEnable ("ComponentCarrierUe", LOG_LEVEL_ALL);
   LogComponentEnable ("CqaFfMacScheduler", LOG_LEVEL_ALL);
   LogComponentEnable ("EpcEnbApplication", LOG_LEVEL_ALL);
-  LogComponentEnable ("EpcMmeApplication", LOG_LEVEL_ALL);
-  LogComponentEnable ("EpcPgwApplication", LOG_LEVEL_ALL);
-  LogComponentEnable ("EpcSgwApplication", LOG_LEVEL_ALL);
+  LogComponentEnable ("EpcMme", LOG_LEVEL_ALL);
+  LogComponentEnable ("EpcSgwPgwApplication", LOG_LEVEL_ALL);
   LogComponentEnable ("EpcTft", LOG_LEVEL_ALL);
   LogComponentEnable ("EpcTftClassifier", LOG_LEVEL_ALL);
   LogComponentEnable ("EpcUeNas", LOG_LEVEL_ALL);

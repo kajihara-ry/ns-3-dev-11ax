@@ -295,7 +295,7 @@ public:
 };
 
 WifiInterferenceTestSuite::WifiInterferenceTestSuite ()
-  : TestSuite ("wifi-interference", UNIT)
+  : TestSuite ("ns3-wifi-interference", UNIT)
 {
   AddTestCase (new WifiInterferenceTestCase, TestCase::QUICK);
 }

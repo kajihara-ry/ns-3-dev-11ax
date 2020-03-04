@@ -77,10 +77,14 @@ AdhocWifiMac::Enqueue (Ptr<const Packet> packet, Mac48Address to)
   NS_LOG_FUNCTION (this << packet << to);
   if (m_stationManager->IsBrandNew (to))
     {
-      //In ad hoc mode, we assume that every destination supports all the rates we support.
-      if (GetHtSupported ())
+      //In ad hoc mode, we assume that every destination supports all
+      //the rates we support.
+      if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
         {
           m_stationManager->AddAllSupportedMcs (to);
+        }
+      if (GetHtSupported ())
+        {
           m_stationManager->AddStationHtCapabilities (to, GetHtCapabilities ());
         }
       if (GetVhtSupported ())
@@ -133,9 +137,9 @@ AdhocWifiMac::Enqueue (Ptr<const Packet> packet, Mac48Address to)
       hdr.SetType (WIFI_MAC_DATA);
     }
 
-  if (GetHtSupported ())
+  if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
     {
-      hdr.SetNoOrder (); // explicitly set to 0 for the time being since HT control field is not yet implemented (set it to 1 when implemented)
+      hdr.SetNoOrder (); // explicitly set to 0 for the time being since HT/VHT/HE control field is not yet implemented (set it to 1 when implemented)
     }
   hdr.SetAddr1 (to);
   hdr.SetAddr2 (m_low->GetAddress ());
@@ -176,10 +180,15 @@ AdhocWifiMac::Receive (Ptr<Packet> packet, const WifiMacHeader *hdr)
   Mac48Address to = hdr->GetAddr1 ();
   if (m_stationManager->IsBrandNew (from))
     {
-      //In ad hoc mode, we assume that every destination supports all the rates we support.
-      if (GetHtSupported ())
+      //In ad hoc mode, we assume that every destination supports all
+      //the rates we support.
+      if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
         {
           m_stationManager->AddAllSupportedMcs (from);
+          m_stationManager->AddStationHtCapabilities (from, GetHtCapabilities ());
+        }
+      if (GetHtSupported ())
+        {
           m_stationManager->AddStationHtCapabilities (from, GetHtCapabilities ());
         }
       if (GetVhtSupported ())

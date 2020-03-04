@@ -1027,7 +1027,7 @@ public:
 };
 
 PowerRateAdaptationTestSuite::PowerRateAdaptationTestSuite ()
-  : TestSuite ("wifi-power-rate-adaptation", UNIT)
+  : TestSuite ("power-rate-adaptation-wifi", UNIT)
 {
   AddTestCase (new PowerRateAdaptationTest, TestCase::QUICK);
 }

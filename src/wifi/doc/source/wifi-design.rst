@@ -322,14 +322,6 @@ and the PHY is put into the RX state.  Currently, there is only a
 simple threshold-based preamble detection model in ns-3,
 called ``ThresholdPreambleDetectionModel``.  If there is no preamble detection
 model, the preamble is assumed to have been detected.  
-It is important to note that, starting with the ns-3.30 release, the default
-in the WifiPhyHelper is to add the ``ThresholdPreambleDetectionModel`` with
-a threshold RSSI of -82 dBm, and a threshold SNR of 4 dB.  Both the RSSI
-and SNR must be above these respective values for the preamble to be
-successfully detected.  The default sensitivity has been reduced in ns-3.30
-compared with that of previous releases, so some packet receptions that were 
-previously successful will now fail on this check.  More details on the
-modeling behind this change are provided in [lanante2019]_.
 
 In a real system, the ``EndReceive ()`` time would
 not be determined until later when the PHY headers are successfully decoded,
@@ -578,28 +570,9 @@ where the backoff timer duration is lazily calculated whenever needed since it
 is claimed to have much better performance than the simpler recurring timer
 solution.
 
-The DCF basic access is described in section 10.3.4.2 of [ieee80211-2016]_.
+The backoff procedure of DCF is described in section 9.2.5.2 of [ieee80211]_.
 
-*  “A STA may transmit an MPDU when it is operating under the DCF access method
-   [..] when the STA determines that the medium is idle when a frame is queued
-   for transmission, and remains idle for a period of a DIFS, or an EIFS
-   (10.3.2.3.7) from the end of the immediately preceding medium-busy event,
-   whichever is the greater, and the backoff timer is zero. Otherwise the random
-   backoff procedure described in 10.3.4.3 shall be followed."
-
-Thus, a station is allowed not to invoke the backoff procedure if all of the
-following conditions are met:
-
-*  the medium is idle when a frame is queued for transmission
-*  the medium remains idle until the most recent of these two events: a DIFS
-   from the time when the frame is queued for transmission; an EIFS from the
-   end of the immediately preceding medium-busy event (associated with the
-   reception of an erroneous frame)
-*  the backoff timer is zero
-
-The backoff procedure of DCF is described in section 10.3.4.3 of [ieee80211-2016]_.
-
-*  “A STA shall invoke the backoff procedure to transfer a frame
+*  “The backoff procedure shall be invoked for a STA to transfer a frame 
    when finding the medium busy as indicated by either the physical or 
    virtual CS mechanism.”
 *  “A backoff procedure shall be performed immediately after the end of 
@@ -607,43 +580,19 @@ The backoff procedure of DCF is described in section 10.3.4.3 of [ieee80211-2016
    type Data, Management, or Control with subtype PS-Poll, even if no 
    additional transmissions are currently queued.”
 
-The EDCA backoff procedure is slightly different than the DCF backoff procedure
-and is described in section 10.22.2.2 of [ieee80211-2016]_. The backoff procedure
-shall be invoked by an EDCAF when any of the following events occur:
+Thus, if the queue is empty, a newly arrived packet should be transmitted 
+immediately after channel is sensed idle for DIFS.  If queue is not empty 
+and after a successful MPDU that has no more fragments, a node should 
+also start the backoff timer.
 
-*  a frame is "queued for transmission such that one of the transmit queues
-   associated with that AC has now become non-empty and any other transmit queues
-   associated with that AC are empty; the medium is busy on the primary channel"
-*  "The transmission of the MPDU in the final PPDU transmitted by the TXOP holder
-   during the TXOP for that AC has completed and the TXNAV timer has expired, and
-   the AC was a primary AC"
-*  "The transmission of an MPDU in the initial PPDU of a TXOP fails [..] and the
-   AC was a primary AC"
-*  "The transmission attempt collides internally with another EDCAF of an AC that
-   has higher priority"
-*  (optionally) "The transmission by the TXOP holder of an MPDU in a non-initial
-   PPDU of a TXOP fails"
-
-Additionally, section 10.22.2.4 of [ieee80211-2016]_ introduces the notion of
-slot boundary, which basically occurs following SIFS + AIFSN * slotTime of idle
-medium after the last busy medium that was the result of a reception of a frame
-with a correct FCS or following EIFS - DIFS + AIFSN * slotTime + SIFS of idle
-medium after the last indicated busy medium that was the result of a frame reception
-that has resulted in FCS error, or following a slotTime of idle medium occurring
-immediately after any of these conditions.
-
-On these specific slot boundaries, each EDCAF shall make a determination to perform
-one and only one of the following functions:
-
-*  Decrement the backoff timer.
-*  Initiate the transmission of a frame exchange sequence.
-*  Invoke the backoff procedure due to an internal collision.
-*  Do nothing.
-
-Thus, if an EDCAF decrements its backoff timer on a given slot boundary and, as
-a result, the backoff timer has a zero value, the EDCAF cannot immediately
-transmit, but it has to wait for another slotTime of idle medium before transmission
-can start.
+Some users have observed that the 802.11 MAC with an empty queue on an 
+idle channel will transmit the first frame arriving to the model 
+immediately without waiting for DIFS or backoff, and wonder whether this 
+is compliant.  According to the standard, “The backoff procedure shall 
+be invoked for a STA to transfer a frame when finding the medium busy 
+as indicated by either the physical or virtual CS mechanism.”  So in 
+this case, the medium is not found to be busy in recent past and the 
+station can transmit immediately. 
 
 The higher-level MAC functions are implemented in a set of other C++ classes and
 deal with:
@@ -751,39 +700,6 @@ In minstrel, roughly 10 percent of transmissions are sent at the so-called looka
 The goal of the lookaround rate is to force minstrel to try higher rate than the currently used rate.
 
 For a more detailed information about minstrel, see [linuxminstrel]_.
-
-Ack policy selection
-####################
-
-Since the introduction of the IEEE 802.11e amendment, multiple acknowledgment policies
-are available, which are coded in the Ack Policy subfield in the QoS Control field of
-QoS Data frames (see Section 9.2.4.5.4 of the IEEE 802.11-2016 standard). For instance,
-an A-MPDU can be sent with the *Normal Ack or Implicit Block Ack Request* policy, in which
-case the receiver replies with a Normal Ack or a Block Ack depending on whether the A-MPDU
-contains a single MPDU or multiple MPDUs, or with the *Block Ack* policy, in which case
-the receiver waits to receive a Block Ack Request in the future to which it replies with
-a Block Ack.
-
-``WifiAckPolicySelector`` is the abstract base class introduced to provide an interface
-for multiple ack policy selectors. Currently, the default ack policy selector is
-the ``ConstantWifiAckPolicySelector``.
-
-ConstantWifiAckPolicySelector
-#############################
-
-The ``ConstantWifiAckPolicySelector`` allows to determine which acknowledgment policy
-to use depending on the value of its attributes:
-
-* UseExplicitBar: used to determine the ack policy to use when a response is needed from
-  the recipient and the current transmission includes multiple frames (A-MPDU) or there are
-  frames transmitted previously for which an acknowledgment is needed. If this attribute is
-  true, the *Block Ack* policy is used. Otherwise, the *Implicit Block Ack Request* policy is used.
-* BaThreshold: used to determine when the originator of a Block Ack agreement needs to
-  request a response from the recipient. A value of zero means that a response is requested
-  at every frame transmission. Otherwise, a non-zero value (less than or equal to 1) means
-  that a response is requested upon transmission of a frame whose sequence number is distant
-  at least BaThreshold multiplied by the transmit window size from the starting sequence
-  number of the transmit window.
 
 802.11ax OBSS PD spatial reuse
 ##############################

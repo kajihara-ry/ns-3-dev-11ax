@@ -72,6 +72,8 @@ ConstantObssPdAlgorithm::ReceiveHeSig (HePreambleParameters params)
       return;
     }
 
+  NS_LOG_DEBUG ("RSSI=" << WToDbm (params.rssiW) << " dBm , BSS color=" << +params.bssColor);
+
   Ptr<HeConfiguration> heConfiguration = m_device->GetHeConfiguration ();
   NS_ASSERT (heConfiguration);
   UintegerValue bssColorAttribute;
@@ -103,6 +105,12 @@ ConstantObssPdAlgorithm::ReceiveHeSig (HePreambleParameters params)
           NS_LOG_DEBUG ("Frame is OBSS and RSSI is above OBSS-PD level");
         }
     }
+}
+
+void
+ConstantObssPdAlgorithm::ReceiveBeacon (HeBeaconReceptionParameters params)
+{
+  NS_LOG_FUNCTION (this);
 }
 
 } //namespace ns3
