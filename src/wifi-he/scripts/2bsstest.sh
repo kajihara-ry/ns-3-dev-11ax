@@ -66,7 +66,7 @@ export uplink=400 #uplink offered load in Mbps
 
 
 #Number of STAs(each BSS)
-export n=1
+export n=10
 
 #Run
 export test="RngRun${RngRun}_Duration${duration}_${nBss}BSS_${n}STA_MCS${MCS}_r${r}_d${d}"
