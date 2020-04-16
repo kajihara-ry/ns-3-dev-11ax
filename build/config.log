@@ -1,16 +1,16 @@
-# project ns (3-dev) configured on Wed Mar  4 11:20:36 2020 by
+# project ns (3-dev) configured on Thu Apr 16 12:24:08 2020 by
 # waf 2.0.15 (abi 20, python 2070cf0 on linux2)
-# using ./waf configure --enable-tests --enable-examples
+# using ./waf configure --enable-examples --enable-tests --build-profile=optimized
 #
 ----------------------------------------
 Setting top to
-/home/kajihara/backoff
+/home/kajihara/git_backoff/ns-3-dev-11ax
 ----------------------------------------
 Setting out to
-/home/kajihara/backoff/build
+/home/kajihara/git_backoff/ns-3-dev-11ax/build
 ----------------------------------------
 Checking for 'gcc' (C compiler)
-find program=['gcc', 'cc'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
+find program=['gcc', 'cc'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
 ['/usr/bin/gcc', '-dM', '-E', '-']
 out: #define __SSP_STRONG__ 3
 #define __DBL_MIN_EXP__ (-1021)
@@ -261,14 +261,14 @@ out: #define __SSP_STRONG__ 3
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
+find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
 /usr/bin/gcc
 ----------------------------------------
 Checking for cc version
 5.4.0
 ----------------------------------------
 Checking for 'g++' (C++ compiler)
-find program=['g++', 'c++'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
+find program=['g++', 'c++'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
 ['/usr/bin/g++', '-dM', '-E', '-']
 out: #define __SSP_STRONG__ 3
 #define __DBL_MIN_EXP__ (-1021)
@@ -519,25 +519,34 @@ out: #define __SSP_STRONG__ 3
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
+find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
 /usr/bin/g++
+---------------------------------------------------
+Checking for compilation flag -march=native support
+==>
+int main() { return 0; }
+<==
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
+
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
+ok
 ------------------------------------------------------
 Checking for compilation flag -Wl,--soname=foo support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------
 Checking for compilation flag -std=c++11 support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------
 Checking boost includes
@@ -582,17 +591,17 @@ Checking for boost linkage
 int main() { boost::system::error_code c; }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_07a276c6cd8c13c1035d9ecd498756bc/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_dd97960ec208ebbb0a02320e4c2782b2/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_07a276c6cd8c13c1035d9ecd498756bc/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_07a276c6cd8c13c1035d9ecd498756bc/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-I/usr/include', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_dd97960ec208ebbb0a02320e4c2782b2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_dd97960ec208ebbb0a02320e4c2782b2/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_07a276c6cd8c13c1035d9ecd498756bc/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_signals', '-lboost_filesystem']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_dd97960ec208ebbb0a02320e4c2782b2/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_signals', '-lboost_filesystem']
 ok
 ------------------------------------------------------
 Checking for program 'python'
 /usr/bin/python
-find program=['python'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
+find program=['python'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
 ['/usr/bin/python', '-c', 'import imp;print(imp.get_tag())']
 err: Traceback (most recent call last):
   File "<string>", line 1, in <module>
@@ -659,7 +668,7 @@ LDVERSION = ''
 ------------------------------------------------------
 python-config
 /usr/bin/python-config
-find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='PYTHON_CONFIG' -> ['/usr/bin/python-config']
+find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON_CONFIG' -> ['/usr/bin/python-config']
 ------------------------------------------------------------------
 Asking python-config for pyembed '--cflags --libs --ldflags' flags
 ['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
@@ -695,12 +704,12 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_4fabe2ac243e2881aef24b61905798b2/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_a6cda0c0d217fef68d4975528682ac3d/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fno-strict-aliasing', '-g', '-fstack-protector-strong', '-g', '-fwrapv', '-O2', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_4fabe2ac243e2881aef24b61905798b2/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_4fabe2ac243e2881aef24b61905798b2/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fno-strict-aliasing', '-g', '-fstack-protector-strong', '-g', '-fwrapv', '-O2', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_a6cda0c0d217fef68d4975528682ac3d/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_a6cda0c0d217fef68d4975528682ac3d/testbuild/testprog[0m
 
-['/usr/bin/g++', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_4fabe2ac243e2881aef24b61905798b2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
+['/usr/bin/g++', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_a6cda0c0d217fef68d4975528682ac3d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
 yes
 ------------------------------------------------------------------
 Asking python-config for pyext '--cflags --libs --ldflags' flags
@@ -737,30 +746,30 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_1956c79f82e32458c11d8fcabc3cea30/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_8c17aa6bd2205f60a6650c79517e2d77/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fPIC', '-fno-strict-aliasing', '-g', '-fstack-protector-strong', '-g', '-fwrapv', '-O2', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_1956c79f82e32458c11d8fcabc3cea30/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_1956c79f82e32458c11d8fcabc3cea30/testbuild/testprog.so[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fPIC', '-fno-strict-aliasing', '-g', '-fstack-protector-strong', '-g', '-fwrapv', '-O2', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_8c17aa6bd2205f60a6650c79517e2d77/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_8c17aa6bd2205f60a6650c79517e2d77/testbuild/testprog.so[0m
 
-['/usr/bin/g++', '-shared', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_1956c79f82e32458c11d8fcabc3cea30/testbuild/testprog.so', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
+['/usr/bin/g++', '-shared', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_8c17aa6bd2205f60a6650c79517e2d77/testbuild/testprog.so', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
 yes
 ------------------------------------------------------------------
 Checking for compilation flag -fvisibility=hidden support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fvisibility=hidden', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fvisibility=hidden', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wno-array-bounds support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-array-bounds', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-Wno-array-bounds', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for pybindgen location
@@ -773,14 +782,14 @@ err: Traceback (most recent call last):
 ImportError: No module named pybindgen
 
 not found
-from /home/kajihara/backoff/bindings/python: Could not find the python module 'pybindgen'
+from /home/kajihara/git_backoff/ns-3-dev-11ax/bindings/python: Could not find the python module 'pybindgen'
 ------------------------------------------------------------------
 Checking for click location
 not found
 ------------------------------------------------------------------
 Checking for program 'pkg-config'
 /usr/bin/pkg-config
-find program=['pkg-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
+find program=['pkg-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
 ------------------------------------------------------------------
 Checking for 'gtk+-3.0'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gtk+-3.0']
@@ -790,7 +799,7 @@ to the PKG_CONFIG_PATH environment variable
 No package 'gtk+-3.0' found
 
 not found
-from /home/kajihara/backoff/src/config-store: The configuration failed
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/config-store: The configuration failed
 ------------------------------------------------------------------
 Checking for 'libxml-2.0'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'libxml-2.0']
@@ -811,9 +820,9 @@ checking for uint128_t
         }
         
 <==
-[1/2] Compiling [32mbuild/.conf_check_6728a960ca9fe63b347df57d9fac384b/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_f6635e1f05603f8c67e4bcd157f266a5/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_6728a960ca9fe63b347df57d9fac384b/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_f6635e1f05603f8c67e4bcd157f266a5/testbuild/test.cpp.1.o']
 err: ../test.cpp: In function ‘int main(int, char**)’:
 ../test.cpp:6:7: error: ‘uint128_t’ was not declared in this scope
   if ((uint128_t *) 0) return 0;
@@ -828,16 +837,16 @@ err: ../test.cpp: In function ‘int main(int, char**)’:
   if (sizeof (uint128_t)) return 0;
               ^
 
-from /home/kajihara/backoff/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/kajihara/backoff/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Configure.py", line 325, in run_build
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/kajihara/git_backoff/ns-3-dev-11ax/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Configure.py", line 325, in run_build
     bld.compile()
-  File "/home/kajihara/backoff/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Build.py", line 176, in compile
+  File "/home/kajihara/git_backoff/ns-3-dev-11ax/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Build.py", line 176, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
 
 not found
-from /home/kajihara/backoff/src/core: The configuration failed
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/core: The configuration failed
 ------------------------------------------------------------------
 checking for __uint128_t
 ==>
@@ -852,12 +861,12 @@ checking for __uint128_t
         }
         
 <==
-[1/2] Compiling [32mbuild/.conf_check_574563d67d38fc2a0748997d307234a9/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_fc36e68336f10b55e9eee0f790c20e15/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_574563d67d38fc2a0748997d307234a9/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_574563d67d38fc2a0748997d307234a9/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_fc36e68336f10b55e9eee0f790c20e15/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_fc36e68336f10b55e9eee0f790c20e15/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_574563d67d38fc2a0748997d307234a9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_fc36e68336f10b55e9eee0f790c20e15/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking high precision implementation
@@ -873,12 +882,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_dde9478cc1d4992656be2d20c3089fb7/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_12dfc8df9093eb482b44e74e12799104/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_dde9478cc1d4992656be2d20c3089fb7/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_dde9478cc1d4992656be2d20c3089fb7/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_12dfc8df9093eb482b44e74e12799104/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_12dfc8df9093eb482b44e74e12799104/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_dde9478cc1d4992656be2d20c3089fb7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_12dfc8df9093eb482b44e74e12799104/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header inttypes.h
@@ -891,12 +900,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_559543522e7c27f2223ed230004f75e0/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5dda9aafc243ff58983184745f87b912/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_559543522e7c27f2223ed230004f75e0/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_559543522e7c27f2223ed230004f75e0/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_5dda9aafc243ff58983184745f87b912/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5dda9aafc243ff58983184745f87b912/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_559543522e7c27f2223ed230004f75e0/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_5dda9aafc243ff58983184745f87b912/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -909,22 +918,22 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_946028b0335164c070dc429a2aec3372/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_32e6afb7eabd57079cc217cd8819b7cc/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_946028b0335164c070dc429a2aec3372/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_32e6afb7eabd57079cc217cd8819b7cc/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:26: fatal error: sys/inttypes.h: そのようなファイルやディレクトリはありません
 compilation terminated.
 
-from /home/kajihara/backoff/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/kajihara/backoff/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Configure.py", line 325, in run_build
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/kajihara/git_backoff/ns-3-dev-11ax/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Configure.py", line 325, in run_build
     bld.compile()
-  File "/home/kajihara/backoff/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Build.py", line 176, in compile
+  File "/home/kajihara/git_backoff/ns-3-dev-11ax/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Build.py", line 176, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
 
 not found
-from /home/kajihara/backoff/src/core: The configuration failed
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for header sys/types.h
 ==>
@@ -936,12 +945,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_e109f490d54335ebb4a26b4f47a7cce7/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_b2411494879e40828648904e961f7261/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_e109f490d54335ebb4a26b4f47a7cce7/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_e109f490d54335ebb4a26b4f47a7cce7/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_b2411494879e40828648904e961f7261/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_b2411494879e40828648904e961f7261/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_e109f490d54335ebb4a26b4f47a7cce7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_b2411494879e40828648904e961f7261/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/stat.h
@@ -954,12 +963,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_9bdc20434b1adfc5a65ef22a05fc1296/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_10335c0637b3629523a4d13f5e534839/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_9bdc20434b1adfc5a65ef22a05fc1296/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_9bdc20434b1adfc5a65ef22a05fc1296/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_10335c0637b3629523a4d13f5e534839/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_10335c0637b3629523a4d13f5e534839/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_9bdc20434b1adfc5a65ef22a05fc1296/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_10335c0637b3629523a4d13f5e534839/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header dirent.h
@@ -972,12 +981,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_2b313663714140e7863a8656a7ea2c36/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_8078367a3480649c347bd5c8437b028f/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_2b313663714140e7863a8656a7ea2c36/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_2b313663714140e7863a8656a7ea2c36/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_8078367a3480649c347bd5c8437b028f/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_8078367a3480649c347bd5c8437b028f/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_2b313663714140e7863a8656a7ea2c36/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_8078367a3480649c347bd5c8437b028f/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header stdlib.h
@@ -990,12 +999,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c3ee8d6a861b359771a423d4c98382e1/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_99540493232655aaec9c686134eb1394/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_c3ee8d6a861b359771a423d4c98382e1/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c3ee8d6a861b359771a423d4c98382e1/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_99540493232655aaec9c686134eb1394/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_99540493232655aaec9c686134eb1394/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_c3ee8d6a861b359771a423d4c98382e1/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_99540493232655aaec9c686134eb1394/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header signal.h
@@ -1008,12 +1017,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_119624951926ae08e495663c335ba644/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1a22be8d75ba381b6eb42ac55537c35b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_119624951926ae08e495663c335ba644/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_119624951926ae08e495663c335ba644/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_1a22be8d75ba381b6eb42ac55537c35b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1a22be8d75ba381b6eb42ac55537c35b/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_119624951926ae08e495663c335ba644/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_1a22be8d75ba381b6eb42ac55537c35b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header pthread.h
@@ -1028,12 +1037,12 @@ int main ()
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_fa39fb41a101c3c7b1a1d29ba4cf916d/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9d19a7d01b614ba8e89f9e1d1a529351/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_fa39fb41a101c3c7b1a1d29ba4cf916d/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_fa39fb41a101c3c7b1a1d29ba4cf916d/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_9d19a7d01b614ba8e89f9e1d1a529351/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_9d19a7d01b614ba8e89f9e1d1a529351/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_fa39fb41a101c3c7b1a1d29ba4cf916d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_9d19a7d01b614ba8e89f9e1d1a529351/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header stdint.h
@@ -1046,12 +1055,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_dde9478cc1d4992656be2d20c3089fb7/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_12dfc8df9093eb482b44e74e12799104/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_dde9478cc1d4992656be2d20c3089fb7/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_dde9478cc1d4992656be2d20c3089fb7/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_12dfc8df9093eb482b44e74e12799104/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_12dfc8df9093eb482b44e74e12799104/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_dde9478cc1d4992656be2d20c3089fb7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_12dfc8df9093eb482b44e74e12799104/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header inttypes.h
@@ -1064,12 +1073,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_559543522e7c27f2223ed230004f75e0/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5dda9aafc243ff58983184745f87b912/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_559543522e7c27f2223ed230004f75e0/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_559543522e7c27f2223ed230004f75e0/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_5dda9aafc243ff58983184745f87b912/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5dda9aafc243ff58983184745f87b912/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_559543522e7c27f2223ed230004f75e0/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_5dda9aafc243ff58983184745f87b912/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -1082,22 +1091,22 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_946028b0335164c070dc429a2aec3372/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_32e6afb7eabd57079cc217cd8819b7cc/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_946028b0335164c070dc429a2aec3372/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_32e6afb7eabd57079cc217cd8819b7cc/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:26: fatal error: sys/inttypes.h: そのようなファイルやディレクトリはありません
 compilation terminated.
 
-from /home/kajihara/backoff/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/kajihara/backoff/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Configure.py", line 325, in run_build
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/kajihara/git_backoff/ns-3-dev-11ax/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Configure.py", line 325, in run_build
     bld.compile()
-  File "/home/kajihara/backoff/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Build.py", line 176, in compile
+  File "/home/kajihara/git_backoff/ns-3-dev-11ax/.waf-2.0.15-ff6573b86ad5ff5d449c8852ad58b8bc/waflib/Build.py", line 176, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
 
 not found
-from /home/kajihara/backoff/src/core: The configuration failed
+from /home/kajihara/git_backoff/ns-3-dev-11ax/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for library rt
 ==>
@@ -1108,12 +1117,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_054994bee36874ba60dd282dc74e307f/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_0bb1e283c6cefef13d14a6f05f3fa98b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_054994bee36874ba60dd282dc74e307f/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_054994bee36874ba60dd282dc74e307f/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_0bb1e283c6cefef13d14a6f05f3fa98b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_0bb1e283c6cefef13d14a6f05f3fa98b/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_054994bee36874ba60dd282dc74e307f/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_0bb1e283c6cefef13d14a6f05f3fa98b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
 yes
 ------------------------------------------------------------------
 Checking for header sys/ioctl.h
@@ -1126,12 +1135,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_844b223b2fcd217a1659639fd5f07c94/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_bdf513f3a12e7d6d0149a9cb2122fda4/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_844b223b2fcd217a1659639fd5f07c94/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_844b223b2fcd217a1659639fd5f07c94/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_bdf513f3a12e7d6d0149a9cb2122fda4/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_bdf513f3a12e7d6d0149a9cb2122fda4/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_844b223b2fcd217a1659639fd5f07c94/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_bdf513f3a12e7d6d0149a9cb2122fda4/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header net/if.h
@@ -1144,12 +1153,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_18dc3670cf70502306872a94b59dcaa9/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1d18578ccb276f2cb5763506c8919577/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_18dc3670cf70502306872a94b59dcaa9/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_18dc3670cf70502306872a94b59dcaa9/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_1d18578ccb276f2cb5763506c8919577/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1d18578ccb276f2cb5763506c8919577/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_18dc3670cf70502306872a94b59dcaa9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_1d18578ccb276f2cb5763506c8919577/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header net/ethernet.h
@@ -1162,12 +1171,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_fd21deecf44f67852b50f0d89290700d/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_7b8407f1ac3987b6c9afffcfaa7d7032/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_fd21deecf44f67852b50f0d89290700d/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_fd21deecf44f67852b50f0d89290700d/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_7b8407f1ac3987b6c9afffcfaa7d7032/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_7b8407f1ac3987b6c9afffcfaa7d7032/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_fd21deecf44f67852b50f0d89290700d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_7b8407f1ac3987b6c9afffcfaa7d7032/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header linux/if_tun.h
@@ -1180,12 +1189,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_8fc337d51520b982ccd1af3e474705f1/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_8fc337d51520b982ccd1af3e474705f1/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_8fc337d51520b982ccd1af3e474705f1/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_8fc337d51520b982ccd1af3e474705f1/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header netpacket/packet.h
@@ -1198,12 +1207,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c7ca411e0528391a8492c78e3ad71b88/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_2d58e771acb7be0eabeb92dc21f654c9/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_c7ca411e0528391a8492c78e3ad71b88/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c7ca411e0528391a8492c78e3ad71b88/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_2d58e771acb7be0eabeb92dc21f654c9/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_2d58e771acb7be0eabeb92dc21f654c9/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_c7ca411e0528391a8492c78e3ad71b88/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_2d58e771acb7be0eabeb92dc21f654c9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for NSC location
@@ -1228,21 +1237,21 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_8fc337d51520b982ccd1af3e474705f1/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_8fc337d51520b982ccd1af3e474705f1/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_8fc337d51520b982ccd1af3e474705f1/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/backoff/build/.conf_check_8fc337d51520b982ccd1af3e474705f1/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_87bd65cfa7bb712fe57172bfa53999f7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for program 'sudo'
 /usr/bin/sudo
-find program=['sudo'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
+find program=['sudo'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
 ------------------------------------------------------------------
 Checking for program 'valgrind'
 /usr/bin/valgrind
-find program=['valgrind'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='VALGRIND' -> ['/usr/bin/valgrind']
+find program=['valgrind'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> ['/usr/bin/valgrind']
 ------------------------------------------------------------------
 Checking for 'gsl'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gsl']
@@ -1252,45 +1261,45 @@ yes
 ------------------------------------------------------------------
 python-config
 not found
-find program=['libgcrypt-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
-from /home/kajihara/backoff: Could not find the program ['libgcrypt-config']
+find program=['libgcrypt-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
+from /home/kajihara/git_backoff/ns-3-dev-11ax: Could not find the program ['libgcrypt-config']
 ------------------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_213696ee4d5cb0b79e9366d1e5cc2b05/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_0273b27808498eb7be7bf9a9443142dc/test.c[0m
 
-['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.c', '-c', '-o/home/kajihara/backoff/build/.conf_check_213696ee4d5cb0b79e9366d1e5cc2b05/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.c', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_0273b27808498eb7be7bf9a9443142dc/testbuild/test.c.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_3216dbc4adfd3b127521c4f78084da24/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.cpp', '-c', '-o/home/kajihara/backoff/build/.conf_check_eebb30e6b649fb5a3903d26e6bed7658/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.cpp', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_3216dbc4adfd3b127521c4f78084da24/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_213696ee4d5cb0b79e9366d1e5cc2b05/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_0273b27808498eb7be7bf9a9443142dc/test.c[0m
 
-['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.c', '-c', '-o/home/kajihara/backoff/build/.conf_check_213696ee4d5cb0b79e9366d1e5cc2b05/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_SQLITE3=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_GSL=1', '../test.c', '-c', '-o/home/kajihara/git_backoff/ns-3-dev-11ax/build/.conf_check_0273b27808498eb7be7bf9a9443142dc/testbuild/test.c.1.o']
 ok
 ------------------------------------------------------------------
 Checking for program 'doxygen'
 /usr/bin/doxygen
-find program=['doxygen'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/snap/bin'] var='DOXYGEN' -> ['/usr/bin/doxygen']
+find program=['doxygen'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> ['/usr/bin/doxygen']

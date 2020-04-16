@@ -3,11 +3,11 @@ AR = ['/usr/bin/ar']
 ARFLAGS = ['rcs']
 BINDIR = '/usr/local/bin'
 BOOST_VERSION = '1_58'
-BUILD_PROFILE = 'debug'
-BUILD_SUFFIX = '-debug'
+BUILD_PROFILE = 'optimized'
+BUILD_SUFFIX = '-optimized'
 CC = ['/usr/bin/gcc']
-CCDEFINES = ['_DEBUG']
-CCFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fstrict-aliasing', '-Wstrict-aliasing']
+CCDEFINES = []
+CCFLAGS = ['-O3', '-g', '-Wall', '-Werror', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fstrict-aliasing', '-Wstrict-aliasing']
 CCFLAGS_PTHREAD = '-pthread'
 CCFLAGS_PYEXT = ['-fvisibility=hidden']
 CCLNK_SRC_F = []
@@ -24,8 +24,8 @@ COMPILER_CC = 'gcc'
 COMPILER_CXX = 'g++'
 CPPPATH_ST = '-I%s'
 CXX = ['/usr/bin/g++']
-CXXDEFINES = ['_DEBUG']
-CXXFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fstrict-aliasing', '-Wstrict-aliasing']
+CXXDEFINES = []
+CXXFLAGS = ['-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fstrict-aliasing', '-Wstrict-aliasing']
 CXXFLAGS_MACBUNDLE = ['-fPIC']
 CXXFLAGS_PTHREAD = '-pthread'
 CXXFLAGS_PYEMBED = ['-fno-strict-aliasing', '-g', '-fstack-protector-strong', '-g', '-fwrapv', '-O2']
@@ -38,7 +38,7 @@ CXX_SRC_F = []
 CXX_TGT_F = ['-c', '-o']
 DATADIR = '/usr/local/share'
 DATAROOTDIR = '/usr/local/share'
-DEFINES = ['NS3_BUILD_PROFILE_DEBUG', 'NS3_ASSERT_ENABLE', 'NS3_LOG_ENABLE', 'HAVE_SYS_IOCTL_H=1', 'HAVE_IF_NETS_H=1', 'HAVE_NET_ETHERNET_H=1', 'HAVE_PACKET_H=1', 'HAVE_SQLITE3=1', 'HAVE_IF_TUN_H=1', 'HAVE_GSL=1']
+DEFINES = ['NS3_BUILD_PROFILE_OPTIMIZED', 'HAVE_SYS_IOCTL_H=1', 'HAVE_IF_NETS_H=1', 'HAVE_NET_ETHERNET_H=1', 'HAVE_PACKET_H=1', 'HAVE_SQLITE3=1', 'HAVE_IF_TUN_H=1', 'HAVE_GSL=1']
 DEFINES_PYEMBED = ['_FORTIFY_SOURCE=2', 'NDEBUG']
 DEFINES_PYEXT = ['_FORTIFY_SOURCE=2', 'NDEBUG']
 DEFINES_ST = '-D%s'
@@ -65,7 +65,7 @@ ENABLE_SUDO = False
 ENABLE_TAP = True
 ENABLE_TESTS = True
 ENABLE_THREADING = True
-EXAMPLE_DIRECTORIES = ['tcp', 'matrix-topology', 'tutorial', 'error-model', 'traffic-control', 'energy', 'wireless', 'realtime', 'naming', 'ipv6', 'udp-client-server', 'stats', 'socket', 'udp', 'routing']
+EXAMPLE_DIRECTORIES = ['realtime', 'udp', 'socket', 'error-model', 'traffic-control', 'ipv6', 'matrix-topology', 'energy', 'naming', 'tutorial', 'stats', 'routing', 'udp-client-server', 'tcp', 'wireless']
 EXEC_PREFIX = '/usr/local'
 HAVE_DIRENT_H = 1
 HAVE_GSL = 1
@@ -127,9 +127,9 @@ MODULES_NOT_BUILT = ['brite', 'click', 'openflow', 'visualizer']
 NS3_CONTRIBUTED_MODULES = []
 NS3_ENABLED_CONTRIBUTED_MODULES = []
 NS3_ENABLED_MODULES = ['ns3-antenna', 'ns3-aodv', 'ns3-applications', 'ns3-bridge', 'ns3-buildings', 'ns3-config-store', 'ns3-core', 'ns3-csma', 'ns3-csma-layout', 'ns3-dsdv', 'ns3-dsr', 'ns3-energy', 'ns3-fd-net-device', 'ns3-flow-monitor', 'ns3-internet', 'ns3-internet-apps', 'ns3-lr-wpan', 'ns3-lte', 'ns3-lte-wifi-coexistence', 'ns3-mesh', 'ns3-mobility', 'ns3-mpi', 'ns3-netanim', 'ns3-network', 'ns3-nix-vector-routing', 'ns3-olsr', 'ns3-point-to-point', 'ns3-point-to-point-layout', 'ns3-propagation', 'ns3-sixlowpan', 'ns3-spectrum', 'ns3-stats', 'ns3-tap-bridge', 'ns3-test', 'ns3-topology-read', 'ns3-traffic-control', 'ns3-uan', 'ns3-virtual-net-device', 'ns3-wave', 'ns3-wifi', 'ns3-wifi-he', 'ns3-wimax']
-NS3_EXECUTABLE_PATH = ['/home/kajihara/backoff/build/src/fd-net-device', '/home/kajihara/backoff/build/src/tap-bridge']
+NS3_EXECUTABLE_PATH = ['/home/kajihara/git_backoff/ns-3-dev-11ax/build/src/fd-net-device', '/home/kajihara/git_backoff/ns-3-dev-11ax/build/src/tap-bridge']
 NS3_MODULES = ['ns3-antenna', 'ns3-aodv', 'ns3-applications', 'ns3-bridge', 'ns3-buildings', 'ns3-config-store', 'ns3-core', 'ns3-csma', 'ns3-csma-layout', 'ns3-dsdv', 'ns3-dsr', 'ns3-energy', 'ns3-fd-net-device', 'ns3-flow-monitor', 'ns3-internet', 'ns3-internet-apps', 'ns3-lr-wpan', 'ns3-lte', 'ns3-lte-wifi-coexistence', 'ns3-mesh', 'ns3-mobility', 'ns3-mpi', 'ns3-netanim', 'ns3-network', 'ns3-nix-vector-routing', 'ns3-olsr', 'ns3-point-to-point', 'ns3-point-to-point-layout', 'ns3-propagation', 'ns3-sixlowpan', 'ns3-spectrum', 'ns3-stats', 'ns3-tap-bridge', 'ns3-test', 'ns3-topology-read', 'ns3-traffic-control', 'ns3-uan', 'ns3-virtual-net-device', 'ns3-wave', 'ns3-wifi', 'ns3-wifi-he', 'ns3-wimax']
-NS3_MODULE_PATH = ['/usr/lib/gcc/x86_64-linux-gnu/5', '/home/kajihara/backoff/build/lib']
+NS3_MODULE_PATH = ['/usr/lib/gcc/x86_64-linux-gnu/5', '/home/kajihara/git_backoff/ns-3-dev-11ax/build/lib']
 NS3_OPTIONAL_FEATURES = [('python', 'Python Bindings', False, 'PyBindGen missing'), ('brite', 'BRITE Integration', False, 'BRITE not enabled (see option --with-brite)'), ('nsclick', 'NS-3 Click Integration', False, 'nsclick not enabled (see option --with-nsclick)'), ('GtkConfigStore', 'GtkConfigStore', [], "library 'gtk+-3.0 >= 3.0' not found"), ('XmlIo', 'XmlIo', '-I/usr/include/libxml2 -lxml2\n', "library 'libxml-2.0 >= 2.7' not found"), ('Threading', 'Threading Primitives', True, '<pthread.h> include not detected'), ('RealTime', 'Real Time Simulator', True, 'threading not enabled'), ('FdNetDevice', 'File descriptor NetDevice', True, 'FdNetDevice module enabled'), ('TapFdNetDevice', 'Tap FdNetDevice', True, 'Tap support enabled'), ('EmuFdNetDevice', 'Emulation FdNetDevice', True, 'Emulation support enabled'), ('PlanetLabFdNetDevice', 'PlanetLab FdNetDevice', False, 'PlanetLab operating system not detected (see option --force-planetlab)'), ('nsc', 'Network Simulation Cradle', False, 'NSC not found (see option --with-nsc)'), ('mpi', 'MPI Support', False, 'option --enable-mpi not selected'), ('openflow', 'NS-3 OpenFlow Integration', False, 'OpenFlow not enabled (see option --with-openflow)'), ('SqliteDataOutput', 'SQlite stats data output', '-lsqlite3\n', "library 'sqlite3' not found"), ('TapBridge', 'Tap Bridge', True, '<linux/if_tun.h> include not detected'), ('PyViz', 'PyViz visualizer', False, 'Python Bindings are needed but not enabled'), ('ENABLE_SUDO', 'Use sudo to set suid bit', False, 'option --enable-sudo not selected'), ('ENABLE_TESTS', 'Tests', True, 'option --enable-tests selected'), ('ENABLE_EXAMPLES', 'Examples', True, 'option --enable-examples selected'), ('GSL', 'GNU Scientific Library (GSL)', '-lgsl -lgslcblas -lm\n', 'GSL not found'), ('libgcrypt', 'Gcrypt library', [], 'libgcrypt not found: you can use libgcrypt-config to find its location.'), ('DES Metrics', 'DES Metrics event collection', [], 'defaults to disabled')]
 OLDINCLUDEDIR = '/usr/include'
 PACKAGE = 'ns'
@@ -166,7 +166,7 @@ VALGRIND = ['/usr/bin/valgrind']
 VALGRIND_FOUND = True
 VERSION = '3-dev'
 WL_SONAME_SUPPORTED = True
-cfg_files = ['/home/kajihara/backoff/build/ns3/config-store-config.h', '/home/kajihara/backoff/build/ns3/core-config.h']
+cfg_files = ['/home/kajihara/git_backoff/ns-3-dev-11ax/build/ns3/config-store-config.h', '/home/kajihara/git_backoff/ns-3-dev-11ax/build/ns3/core-config.h']
 cprogram_PATTERN = '%s'
 cshlib_PATTERN = 'lib%s.so'
 cstlib_PATTERN = 'lib%s.a'

@@ -607,19 +607,17 @@ SaveSpectrumPhyStats (std::string filename, const std::vector<SignalArrival> &ar
   outFile.close ();
 }
 
-//##########################################################Display Backoff#############################################################################
 void
 CwTrace (std::string context, uint32_t oldVal, uint32_t newVal)
 {
-std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+  //std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
 }
 void
 BackoffTrace (std::string context, uint32_t newVal)
 {
-  std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+  //std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
 }
 
-//#######################################################################################################################################################
 void
 SchedulePhyLogConnect (void)
 {
@@ -2318,8 +2316,10 @@ bytesTransmitted[nodeId] = 0;
       unitDiscPositionAllocator1->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-          Vector v = unitDiscPositionAllocator1->GetNext ();
-          positionAlloc->Add (v);
+         //Vector v = unitDiscPositionAllocator1->GetNext ();
+          Vector v; //配置の記述
+          v.x = 0;
+          v.y = r;
           positionOutFile << v.x << ", " << v.y << std::endl;
         }
       positionOutFile << std::endl;
@@ -2339,8 +2339,10 @@ bytesTransmitted[nodeId] = 0;
       unitDiscPositionAllocator2->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-          Vector v = unitDiscPositionAllocator2->GetNext ();
-          positionAlloc->Add (v);
+          //Vector v = unitDiscPositionAllocator1->GetNext ();
+          Vector v; //配置の記述
+          v.x = d;
+          v.y = r;
           positionOutFile << v.x << ", " << v.y << std::endl;
         }
       positionOutFile << std::endl;
@@ -2541,7 +2543,10 @@ bytesTransmitted[nodeId] = 0;
       unitDiscPositionAllocator1->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-          Vector v = unitDiscPositionAllocator1->GetNext ();
+          //Vector v = unitDiscPositionAllocator1->GetNext ();
+          Vector v; //配置の記述
+          v.x = 0;
+          v.y = r;
           positionAlloc->Add (v);
           positionOutFile << v.x << ", " << v.y << std::endl;
         }
@@ -2549,24 +2554,27 @@ bytesTransmitted[nodeId] = 0;
       positionOutFile << std::endl;
       if(nBss>=2)
         {
-                // Network "B"
-                // AP2
-                positionAlloc->Add (Vector (x2, y2, 0.0));
-                // STAs for AP2
-                // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
-                // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
-                Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator2 = CreateObject<UniformDiscPositionAllocator> ();
-                unitDiscPositionAllocator2->AssignStreams (streamNumber + 1);
-                // AP1 is at origin (x=x2, y=y2), with radius Rho=r
-                 unitDiscPositionAllocator2->SetX (x2);
-                unitDiscPositionAllocator2->SetY (y2);
-                unitDiscPositionAllocator2->SetRho (r);
-                for (uint32_t i = 0; i < n; i++)
-                        {
-                         Vector v = unitDiscPositionAllocator2->GetNext ();
-                        positionAlloc->Add (v);
-                        positionOutFile << v.x << ", " << v.y << std::endl;
-                        }
+         // Network "B"
+         // AP2
+         positionAlloc->Add (Vector (x2, y2, 0.0));
+         // STAs for AP2
+         // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
+         // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+         Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator2 = CreateObject<UniformDiscPositionAllocator> ();
+         unitDiscPositionAllocator2->AssignStreams (streamNumber + 1);
+         // AP1 is at origin (x=x2, y=y2), with radius Rho=r
+         unitDiscPositionAllocator2->SetX (x2);
+         unitDiscPositionAllocator2->SetY (y2);
+         unitDiscPositionAllocator2->SetRho (r);
+         for (uint32_t i = 0; i < n; i++)
+            {
+             //Vector v = unitDiscPositionAllocator2->GetNext ();
+             Vector v;
+             v.x = d;
+             v.y = r;
+             positionAlloc->Add (v);
+             positionOutFile << v.x << ", " << v.y << std::endl;
+            }
         }
       else
         {
