@@ -26,6 +26,7 @@
 #include <map>
 #include "ns3/object.h"
 #include "ns3/nstime.h"
+#include "ns3/traced-callback.h"
 #include "channel-access-manager.h"
 #include "block-ack-cache.h"
 #include "mac-low-transmission-parameters.h"
@@ -277,40 +278,6 @@ public:
   void RegisterDcf (Ptr<ChannelAccessManager> dcf);
 
   /**
-   * Check whether the given MPDU, if transmitted according to the given TX vector,
-   * meets the constraint on the maximum A-MPDU size (by assuming that the frame
-   * has to be aggregated to an existing A-MPDU of the given size) and its
-   * transmission time exceeds neither the max PPDU duration (depending on the
-   * PPDU format) nor the given PPDU duration limit (if strictly positive).
-   * The given MPDU needs to be a QoS Data frame.
-   *
-   * \param mpdu the MPDU.
-   * \param txVector the TX vector used to transmit the MPDU
-   * \param ampduSize the size of the existing A-MPDU, if any
-   * \param ppduDurationLimit the limit on the PPDU duration
-   * \returns true if constraints on size and duration limit are met.
-   */
-  bool IsWithinSizeAndTimeLimits (Ptr<const WifiMacQueueItem> mpdu, WifiTxVector txVector,
-                                  uint32_t ampduSize, Time ppduDurationLimit);
-  /**
-   * Check whether an MPDU of the given size, destined to the given receiver and
-   * belonging to the given TID, if transmitted according to the given TX vector,
-   * meets the constraint on the maximum A-MPDU size (by assuming that the frame
-   * has to be aggregated to an existing A-MPDU of the given size) and its
-   * transmission time exceeds neither the max PPDU duration (depending on the
-   * PPDU format) nor the given PPDU duration limit (if strictly positive).
-   *
-   * \param mpduSize the MPDU size.
-   * \param receiver the receiver
-   * \param tid the TID
-   * \param txVector the TX vector used to transmit the MPDU
-   * \param ampduSize the size of the existing A-MPDU, if any
-   * \param ppduDurationLimit the limit on the PPDU duration
-   * \returns true if constraints on size and duration limit are met.
-   */
-  bool IsWithinSizeAndTimeLimits (uint32_t mpduSize, Mac48Address receiver, uint8_t tid,
-                                  WifiTxVector txVector, uint32_t ampduSize, Time ppduDurationLimit);
-  /**
    * \param packet to send (does not include the 802.11 MAC header and checksum)
    * \param hdr header associated to the packet to send.
    * \param parameters transmission parameters of packet.
@@ -364,20 +331,22 @@ public:
   /**
    * \param packet packet received
    * \param rxSnr snr of packet received
+   * \param rxpower rx power in W of packet received
    * \param txVector TXVECTOR of packet received
    * \param ampduSubframe true if this MPDU is part of an A-MPDU
    *
    * This method is typically invoked by the lower PHY layer to notify
    * the MAC layer that a packet was successfully received.
    */
-  void ReceiveOk (Ptr<Packet> packet, double rxSnr, WifiTxVector txVector, bool ampduSubframe);
+  void ReceiveOk (Ptr<Packet> packet, double rxSnr, double rxPower, WifiTxVector txVector, bool ampduSubframe);
   /**
    * \param packet packet received.
+   * \param rxSnr snr of packet received.
    *
    * This method is typically invoked by the lower PHY layer to notify
    * the MAC layer that a packet was unsuccessfully received.
    */
-  void ReceiveError (Ptr<Packet> packet);
+  void ReceiveError (Ptr<Packet> packet, double rxSnr);
   /**
    * \param duration switching delay duration.
    *
@@ -436,15 +405,15 @@ public:
   /**
    * \param aggregatedPacket which is the current A-MPDU
    * \param rxSnr snr of packet received
+   * \param rxPower rx power (W) of packet received
    * \param txVector TXVECTOR of packet received
    * \param statusPerMpdu reception status per MPDU
    *
    * This function de-aggregates an A-MPDU and decide if each MPDU is received correctly or not
    *
    */
-  void DeaggregateAmpduAndReceive (Ptr<Packet> aggregatedPacket, double rxSnr, WifiTxVector txVector,
-                                   std::vector<bool> statusPerMpdu);
-
+  void DeaggregateAmpduAndReceive (Ptr<Packet> aggregatedPacket, double rxSnr, double rxPower,
+                                   WifiTxVector txVector, std::vector<bool> statusPerMpdu);
   /**
    * Return a TXVECTOR for the DATA frame given the destination.
    * The function consults WifiRemoteStationManager, which controls the rate
@@ -471,6 +440,14 @@ public:
   bool CanTransmitNextCfFrame (void) const;
 
   /**
+   * This function announces the start of an A-MPDU transmission.
+   */
+  void NotifyTxAmpdu (Ptr<const Packet>, const WifiMacHeader &);
+  /**
+   * This function announces the start of an Block ACK reception.
+   */
+  void NotifyRxBlockAck (Ptr<const Packet>, const WifiMacHeader &);
+  /*
    * Returns the aggregator used to construct A-MSDU subframes.
    *
    * \return the aggregator used to construct A-MSDU subframes.
@@ -495,6 +472,7 @@ public:
    * \param aggr pointer to the MPDU aggregator.
    */
   void SetMpduAggregator (const Ptr<MpduAggregator> aggr);
+
 
 private:
   /**
@@ -628,26 +606,6 @@ private:
    * \return the time required to transmit the Block ACK (including preamble and FCS)
    */
   Time GetBlockAckDuration (WifiTxVector blockAckReqTxVector, BlockAckType type) const;
-  /**
-   * Return the time required to transmit the Block Ack Request to the specified address
-   * given the TXVECTOR (including preamble and FCS).
-   *
-   * \param blockAckReqTxVector the TX vector used to transmit the BAR
-   * \param type the Block Ack Request type
-   * \return the time required to transmit the Block Ack Request (including preamble and FCS)
-   */
-  Time GetBlockAckRequestDuration (WifiTxVector blockAckReqTxVector, BlockAckType type) const;
-  /**
-   * Return the time required to transmit the response frames (ACK or BAR+BA
-   * following the policy configured in the transmit parameters).
-   *
-   * \param params the transmission parameters
-   * \param dataTxVector the TX vector used to transmit the data frame
-   * \param receiver the station from which a response is expected
-   * \return the time required to transmit the response (ACK or BAR+BA)
-   */
-  Time GetResponseDuration (const MacLowTransmissionParameters& params,
-                            WifiTxVector dataTxVector, Mac48Address receiver) const;
   /**
    * Check if CTS-to-self mechanism should be used for the current packet.
    *
@@ -976,6 +934,9 @@ private:
   WifiTxVector m_currentTxVector;        //!< TXVECTOR used for the current packet transmission
 
   CfAckInfo m_cfAckInfo; //!< Info about piggyback ACKs used in PCF
+
+  TracedCallback <Ptr<const Packet>, const WifiMacHeader &> m_maclowTxAmpduTrace;
+  TracedCallback <Ptr<const Packet>, const WifiMacHeader &> m_maclowRxBlockAckTrace;
 };
 
 } //namespace ns3

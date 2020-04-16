@@ -976,7 +976,7 @@ RegularWifiMac::SendAddBaResponse (const MgtAddBaRequestHeader *reqHdr,
   hdr.SetType (WIFI_MAC_MGT_ACTION);
   hdr.SetAddr1 (originator);
   hdr.SetAddr2 (GetAddress ());
-  hdr.SetAddr3 (GetBssid ());
+  hdr.SetAddr3 (GetAddress ());
   hdr.SetDsNotFrom ();
   hdr.SetDsNotTo ();
 
@@ -1220,6 +1220,11 @@ RegularWifiMac::GetTypeId (void)
                    PointerValue (),
                    MakePointerAccessor (&RegularWifiMac::GetBKQueue),
                    MakePointerChecker<QosTxop> ())
+    .AddAttribute ("MacLow",
+                   "The MacLow object.",
+                   PointerValue (),
+                   MakePointerAccessor (&RegularWifiMac::m_low),
+                   MakePointerChecker<MacLow> ())
     .AddTraceSource ("TxOkHeader",
                      "The header of successfully transmitted packet.",
                      MakeTraceSourceAccessor (&RegularWifiMac::m_txOkCallback),
@@ -1250,7 +1255,7 @@ RegularWifiMac::FinishConfigureStandard (WifiPhyStandard standard)
         NS_ASSERT (htConfiguration);
         htConfiguration->SetRifsSupported (m_rifsSupported);
         SetQosSupported (true);
-        cwmin = 15;
+        cwmin = 31;
         cwmax = 1023;
         break;
       }

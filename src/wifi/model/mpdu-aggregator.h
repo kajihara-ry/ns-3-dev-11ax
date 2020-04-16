@@ -113,8 +113,7 @@ public:
    *
    * - the time to transmit the resulting PPDU, according to the given TxVector,
    * does not exceed both the maximum PPDU duration allowed by the corresponding
-   * modulation class (if any) and the given PPDU duration limit (if distinct from
-   * Time::Min ())
+   * modulation class (if any) and the given PPDU duration limit (if non null)
    *
    * For now, only non-broadcast QoS Data frames can be aggregated (do not pass
    * other types of frames to this method). MPDUs to aggregate are looked for
@@ -134,7 +133,7 @@ public:
    */
   std::vector<Ptr<WifiMacQueueItem>> GetNextAmpdu (Ptr<const WifiMacQueueItem> mpdu,
                                                    WifiTxVector txVector,
-                                                   Time ppduDurationLimit = Time::Min ()) const;
+                                                   Time ppduDurationLimit = Seconds (0)) const;
 
   /**
    * Deaggregates an A-MPDU by removing the A-MPDU subframe header and padding.

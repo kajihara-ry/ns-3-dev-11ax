@@ -141,17 +141,6 @@ public:
   Ipv4Address GetIpv4MappedAddress () const;
 
   /**
-   * \brief Make the autoconfigured IPv6 address from a Mac address.
-   *
-   * Actually the MAC supported are: Mac8, Mac16, Mac48, and Mac64.
-   *
-   * \param addr the MAC address.
-   * \param prefix the IPv6 prefix
-   * \return autoconfigured IPv6 address
-   */
-  static Ipv6Address MakeAutoconfiguredAddress (Address addr, Ipv6Address prefix);
-
-  /**
    * \brief Make the autoconfigured IPv6 address with Mac16Address.
    *
    * The EUI-64 scheme used is based on the \RFC{4944}.
@@ -191,16 +180,6 @@ public:
    * \return autoconfigured IPv6 address
    */
   static Ipv6Address MakeAutoconfiguredAddress (Mac8Address addr, Ipv6Address prefix);
-
-  /**
-   * \brief Make the autoconfigured link-local IPv6 address from a Mac address.
-   *
-   * Actually the MAC supported are: Mac8, Mac16, Mac48, and Mac64.
-   *
-   * \param mac the MAC address.
-   * \return autoconfigured link-local IPv6 address
-   */
-  static Ipv6Address MakeAutoconfiguredLinkLocalAddress (Address mac);
 
   /**
    * \brief Make the autoconfigured link-local IPv6 address with Mac16Address.
@@ -456,37 +435,15 @@ public:
 
   /**
    * \brief Constructs an Ipv6Prefix by using the input 16 bytes.
-   *
-   * The prefix length is calculated as the minimum prefix length, i.e.,
-   * 2001:db8:cafe:: will have a 47 bit prefix length.
-   *
    * \param prefix the 128-bit prefix
    */
   Ipv6Prefix (uint8_t prefix[16]);
 
   /**
    * \brief Constructs an Ipv6Prefix by using the input string.
-   *
-   * The prefix length is calculated as the minimum prefix length, i.e.,
-   * 2001:db8:cafe:: will have a 47 bit prefix length.
-   *
    * \param prefix the 128-bit prefix
    */
   Ipv6Prefix (char const* prefix);
-
-  /**
-   * \brief Constructs an Ipv6Prefix by using the input 16 bytes.
-   * \param prefix the 128-bit prefix
-   * \param prefixLength the prefix length
-   */
-  Ipv6Prefix (uint8_t prefix[16], uint8_t prefixLength);
-
-  /**
-   * \brief Constructs an Ipv6Prefix by using the input string.
-   * \param prefix the 128-bit prefix
-   * \param prefixLength the prefix length
-   */
-  Ipv6Prefix (char const* prefix, uint8_t prefixLength);
 
   /**
    * \brief Constructs an Ipv6Prefix by using the input number of bits.
@@ -533,18 +490,6 @@ public:
   uint8_t GetPrefixLength () const;
 
   /**
-   * \brief Set prefix length.
-   * \param prefixLength the prefix length
-   */
-   void SetPrefixLength (uint8_t prefixLength);
-
-   /**
-    * \brief Get the minimum prefix length, i.e., 128 - the length of the largest sequence trailing zeroes.
-    * \return minimum prefix length
-    */
-   uint8_t GetMinimumPrefixLength () const;
-
-  /**
    * \brief Comparison operation between two Ipv6Prefix.
    * \param other the IPv6 prefix to which to compare this prefix
    * \return true if the prefixes are equal, false otherwise
@@ -582,11 +527,6 @@ private:
    * \brief The prefix representation.
    */
   uint8_t m_prefix[16];
-
-  /**
-   * \brief The prefix length.
-   */
-  uint8_t m_prefixLength;
 
   /**
    * \brief Equal to operator.

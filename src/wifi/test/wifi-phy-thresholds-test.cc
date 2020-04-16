@@ -29,7 +29,6 @@
 #include "ns3/wifi-phy-tag.h"
 #include "ns3/wifi-spectrum-signal-parameters.h"
 #include "ns3/wifi-utils.h"
-#include "ns3/wifi-phy-header.h"
 
 using namespace ns3;
 
@@ -77,12 +76,13 @@ protected:
    * \param txVector the transmit vector
    * \param statusPerMpdu reception status per MPDU
    */
-  virtual void RxSuccess (Ptr<Packet> p, double snr, WifiTxVector txVector, std::vector<bool> statusPerMpdu);
+  virtual void RxSuccess (Ptr<Packet> p, double snr, double rxPower, WifiTxVector txVector, std::vector<bool> statusPerMpdu);
   /**
    * PHY receive failure callback function
    * \param p the packet
+   * \param snr the SNR
    */
-  virtual void RxFailure (Ptr<Packet> p);
+  virtual void RxFailure (Ptr<Packet> p, double snr);
   /**
    * PHY dropped packet callback function
    * \param p the packet
@@ -129,7 +129,7 @@ WifiPhyThresholdsTest::~WifiPhyThresholdsTest ()
 Ptr<SpectrumSignalParameters>
 WifiPhyThresholdsTest::MakeWifiSignal (double txPowerWatts)
 {
-  WifiTxVector txVector = WifiTxVector (WifiPhy::GetOfdmRate6Mbps (), 0, WIFI_PREAMBLE_LONG, 800, 1, 1, 0, 20, false, false);
+  WifiTxVector txVector = WifiTxVector (WifiPhy::GetOfdmRate6Mbps (), 0, WIFI_PREAMBLE_LONG, false, 1, 1, 0, 20, false, false);
 
   Ptr<Packet> pkt = Create<Packet> (1000);
   WifiMacHeader hdr;
@@ -184,16 +184,16 @@ WifiPhyThresholdsTest::SendSignal (double txPowerWatts, bool wifiSignal)
 }
 
 void
-WifiPhyThresholdsTest::RxSuccess (Ptr<Packet> p, double snr, WifiTxVector txVector, std::vector<bool> statusPerMpdu)
+WifiPhyThresholdsTest::RxSuccess (Ptr<Packet> p, double snr, double rxPower, WifiTxVector txVector, std::vector<bool> statusPerMpdu)
 {
-  NS_LOG_FUNCTION (this << p << snr << txVector);
+  NS_LOG_FUNCTION (this << p << snr << rxPower << txVector);
   m_rxSuccess++;
 }
 
 void
-WifiPhyThresholdsTest::RxFailure (Ptr<Packet> p)
+WifiPhyThresholdsTest::RxFailure (Ptr<Packet> p, double snr)
 {
-  NS_LOG_FUNCTION (this << p);
+  NS_LOG_FUNCTION (this << p << snr);
   m_rxFailure++;
 }
 

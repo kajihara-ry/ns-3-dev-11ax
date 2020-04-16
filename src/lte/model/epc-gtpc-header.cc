@@ -394,7 +394,7 @@ GtpcIes::DeserializeBearerTft (Buffer::Iterator &i, Ptr<EpcTft> epcTft)
   return GetSerializedSizeBearerTft (epcTft->GetPacketFilters ());
 }
 
-uint32_t
+inline uint32_t
 GtpcIes::GetSerializedSizeBearerTft (std::list<EpcTft::PacketFilter> packetFilters) const
 {
   return (5 + packetFilters.size () * serializedSizePacketFilter);
@@ -874,14 +874,14 @@ GtpcModifyBearerRequestMessage::Print (std::ostream &os) const
   os << " imsi " << m_imsi << " uliEcgi " << m_uliEcgi;
 }
 
-uint64_t
+uint8_t
 GtpcModifyBearerRequestMessage::GetImsi () const
 {
   return m_imsi;
 }
 
 void
-GtpcModifyBearerRequestMessage::SetImsi (uint64_t imsi)
+GtpcModifyBearerRequestMessage::SetImsi (uint8_t imsi)
 {
   m_imsi = imsi;
 }

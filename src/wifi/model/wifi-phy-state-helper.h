@@ -42,16 +42,18 @@ class Packet;
  *
  * arg1: packet received successfully
  * arg2: SNR of packet
- * arg3: TXVECTOR of packet
- * arg4: vector of per-MPDU status of reception.
+ * arg3: rx power (dBm) of packet
+ * arg4: TXVECTOR of packet
+ * arg5: vector of per-MPDU status of reception.
  */
-typedef Callback<void, Ptr<Packet>, double, WifiTxVector, std::vector<bool>> RxOkCallback;
+typedef Callback<void, Ptr<Packet>, double, double, WifiTxVector, std::vector<bool>> RxOkCallback;
 /**
  * Callback if packet unsuccessfully received
  *
  * arg1: packet received unsuccessfully
+ * arg2: SNR of packet
  */
-typedef Callback<void, Ptr<Packet>> RxErrorCallback;
+typedef Callback<void, Ptr<Packet>, double> RxErrorCallback;
 
 /**
  * \ingroup wifi
@@ -180,10 +182,11 @@ public:
    *
    * \param packet the successfully received packet
    * \param snr the SNR of the received packet
+   * \param rxPower the rx power (W) of the received packet
    * \param txVector TXVECTOR of the packet
    * \param statusPerMpdu reception status per MPDU
    */
-  void SwitchFromRxEndOk (Ptr<Packet> packet, double snr, WifiTxVector txVector, std::vector<bool> statusPerMpdu);
+  void SwitchFromRxEndOk (Ptr<Packet> packet, double snr, double rxPower, WifiTxVector txVector, std::vector<bool> statusPerMpdu);
   /**
    * Switch from RX after the reception failed.
    *

@@ -318,6 +318,7 @@ OnoeWifiManager::DoGetDataTxVector (WifiRemoteStation *st)
   uint16_t channelWidth = GetChannelWidth (station);
   if (channelWidth > 20 && channelWidth != 22)
     {
+      //avoid to use legacy rate adaptation algorithms for IEEE 802.11n/ac
       channelWidth = 20;
     }
   WifiMode mode = GetSupported (station, rateIndex);
@@ -337,6 +338,7 @@ OnoeWifiManager::DoGetRtsTxVector (WifiRemoteStation *st)
   uint16_t channelWidth = GetChannelWidth (station);
   if (channelWidth > 20 && channelWidth != 22)
     {
+      //avoid to use legacy rate adaptation algorithms for IEEE 802.11n/ac
       channelWidth = 20;
     }
   UpdateMode (station);

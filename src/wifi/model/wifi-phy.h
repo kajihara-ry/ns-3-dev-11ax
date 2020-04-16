@@ -29,6 +29,7 @@
 #include "wifi-phy-standard.h"
 #include "interference-helper.h"
 #include "wifi-phy-state-helper.h"
+#include "wifi-phy-header.h"
 
 namespace ns3 {
 
@@ -154,7 +155,7 @@ public:
   void StartReceiveHeader (Ptr<Event> event, Time rxDuration);
 
   /**
-   * Continue receiving the PHY header of a packet (i.e. after the end of receiving the non-HT header part).
+   * Continue receiving the PHY header of a packet (i.e. after the end of receiving the legacy header part).
    *
    * \param event the corresponding event of the first time the packet arrives (also storing packet and TxVector information)
    */
@@ -1135,8 +1136,9 @@ public:
    * Implemented for encapsulation purposes.
    *
    * \param packet the packet received
+   * \param rxPowerW the receive power in Watts
    */
-  void NotifyRxEnd (Ptr<const Packet> packet);
+  void NotifyRxEnd (Ptr<const Packet> packet, double rxPowerW);
   /**
    * Public method used to fire a PhyRxDrop trace.
    * Implemented for encapsulation purposes.
@@ -1552,8 +1554,8 @@ public:
    * Reset PHY to IDLE, with some potential TX power restrictions for the next transmission.
    *
    * \param powerRestricted flag whether the transmit power is restricted for the next transmission
-   * \param txPowerMaxSiso the SISO transmit power restriction for the next transmission
-   * \param txPowerMaxMimo the MIMO transmit power restriction for the next transmission
+   * \param txPowerMaxSiso the SISO transmit power retriction for the next transmission
+   * \param txPowerMaxMimo the MIMO transmit power retriction for the next transmission
    */
   void ResetCca (bool powerRestricted, double txPowerMaxSiso = 0, double txPowerMaxMimo = 0);
   /**
@@ -1787,7 +1789,7 @@ private:
    *
    * \see class CallBackTraceSource
    */
-  TracedCallback<Ptr<const Packet> > m_phyRxEndTrace;
+  TracedCallback<Ptr<const Packet>, double > m_phyRxEndTrace;
 
   /**
    * The trace source fired when the phy layer drops a packet it has received.
@@ -1887,7 +1889,7 @@ private:
   double   m_txPowerEndDbm;       //!< Maximum transmission power (dBm)
   uint8_t  m_nTxPower;            //!< Number of available transmission power levels
 
-  bool m_powerRestricted;  //!< Flag whether transmit power is restricted by OBSS PD SR
+  bool m_powerRestricted;  //!< Flag whether transmit power is retricted by OBSS PD SR
   double m_txPowerMaxSiso; //!< SISO maximum transmit power due to OBSS PD SR power restriction
   double m_txPowerMaxMimo; //!< MIMO maximum transmit power due to OBSS PD SR power restriction
   bool m_channelAccessRequested;

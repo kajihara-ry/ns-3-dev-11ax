@@ -23,9 +23,12 @@
 #include "ns3/core-module.h"
 #include "ns3/internet-module.h"
 #include "ns3/internet-apps-module.h"
+#include "ns3/ipv6-static-routing-helper.h"
 #include "ns3/mobility-module.h"
 #include "ns3/spectrum-module.h"
-#include "ns3/propagation-module.h"
+#include "ns3/propagation-loss-model.h"
+#include "ns3/log.h"
+#include "ns3/ipv6-routing-table-entry.h"
 #include "ns3/sixlowpan-module.h"
 #include "ns3/lr-wpan-module.h"
 
@@ -35,20 +38,16 @@ using namespace ns3;
 
 int main (int argc, char** argv)
 {
-  bool verbose = false;
-
   CommandLine cmd;
-  cmd.AddValue ("verbose", "turn on log components", verbose);
   cmd.Parse (argc, argv);
   
-  if (verbose)
-    {
-      LogComponentEnable ("Ping6Application", LOG_LEVEL_ALL);
-      LogComponentEnable ("LrWpanMac", LOG_LEVEL_ALL);
-      LogComponentEnable ("LrWpanPhy", LOG_LEVEL_ALL);
-      LogComponentEnable ("LrWpanNetDevice", LOG_LEVEL_ALL);
-      LogComponentEnable ("SixLowPanNetDevice", LOG_LEVEL_ALL);
-    }
+#if 0
+  LogComponentEnable ("Ping6Application", LOG_LEVEL_ALL);
+  LogComponentEnable ("LrWpanMac",LOG_LEVEL_ALL);
+  LogComponentEnable ("LrWpanPhy",LOG_LEVEL_ALL);
+  LogComponentEnable ("LrWpanNetDevice", LOG_LEVEL_ALL);
+  LogComponentEnable ("SixLowPanNetDevice", LOG_LEVEL_ALL);
+#endif
 
   NodeContainer nodes;
   nodes.Create(2);
@@ -70,8 +69,6 @@ int main (int argc, char** argv)
   NetDeviceContainer lrwpanDevices = lrWpanHelper.Install(nodes);
 
   // Fake PAN association and short address assignment.
-  // This is needed because the lr-wpan module does not provide (yet)
-  // a full PAN association procedure.
   lrWpanHelper.AssociateToPan (lrwpanDevices, 0);
 
   InternetStackHelper internetv6;

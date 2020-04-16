@@ -614,7 +614,7 @@ public:
 };
 
 WifiAggregationTestSuite::WifiAggregationTestSuite ()
-  : TestSuite ("wifi-aggregation", UNIT)
+  : TestSuite ("aggregation-wifi", UNIT)
 {
   AddTestCase (new AmpduAggregationTest, TestCase::QUICK);
   AddTestCase (new TwoLevelAggregationTest, TestCase::QUICK);

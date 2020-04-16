@@ -39,9 +39,9 @@ struct OnoeWifiRemoteStation;
  * any publication or reference about this algorithm beyond the madwifi
  * source code.
  *
- * This RAA does not support HT modes and will error
+ * This RAA does not support HT, VHT nor HE modes and will error
  * exit if the user tries to configure this RAA with a Wi-Fi MAC
- * that supports 802.11n or higher.
+ * that has VhtSupported, HtSupported or HeSupported set.
  */
 class OnoeWifiManager : public WifiRemoteStationManager
 {

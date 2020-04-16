@@ -84,7 +84,7 @@ IdealWifiManager::SetupPhy (const Ptr<WifiPhy> phy)
 }
 
 uint16_t
-IdealWifiManager::GetChannelWidthForNonHtMode (WifiMode mode) const
+IdealWifiManager::GetChannelWidthForMode (WifiMode mode) const
 {
   NS_ASSERT (mode.GetModulationClass () != WIFI_MOD_CLASS_HT
              && mode.GetModulationClass () != WIFI_MOD_CLASS_VHT
@@ -111,14 +111,14 @@ IdealWifiManager::DoInitialize ()
   for (uint8_t i = 0; i < nModes; i++)
     {
       mode = GetPhy ()->GetMode (i);
-      txVector.SetChannelWidth (GetChannelWidthForNonHtMode (mode));
+      txVector.SetChannelWidth (GetChannelWidthForMode (mode));
       txVector.SetNss (nss);
       txVector.SetMode (mode);
       NS_LOG_DEBUG ("Initialize, adding mode = " << mode.GetUniqueName ());
       AddSnrThreshold (txVector, GetPhy ()->CalculateSnr (txVector, m_ber));
     }
-  // Add all MCSes
-  if (GetHtSupported ())
+  // Add all HT, VHT and HE MCSes
+  if (GetHtSupported () || GetVhtSupported () || GetHeSupported ())
     {
       nModes = GetPhy ()->GetNMcs ();
       for (uint8_t i = 0; i < nModes; i++)
@@ -319,7 +319,8 @@ IdealWifiManager::DoGetDataTxVector (WifiRemoteStation *st)
     }
   else
     {
-      if (GetHtSupported () && GetHtSupported (st))
+      if ((GetHtSupported () || GetVhtSupported () || GetHeSupported ())
+          && (GetHtSupported (st) || GetVhtSupported (st) || GetHeSupported (st)))
         {
           for (uint8_t i = 0; i < GetNMcsSupported (station); i++)
             {
@@ -463,7 +464,7 @@ IdealWifiManager::DoGetDataTxVector (WifiRemoteStation *st)
               mode = GetSupported (station, i);
               txVector.SetMode (mode);
               txVector.SetNss (selectedNss);
-              txVector.SetChannelWidth (GetChannelWidthForNonHtMode (mode));
+              txVector.SetChannelWidth (GetChannelWidthForMode (mode));
               double threshold = GetSnrThreshold (txVector);
               uint64_t dataRate = mode.GetDataRate (txVector.GetChannelWidth (), txVector.GetGuardInterval (), txVector.GetNss ());
               NS_LOG_DEBUG ("mode = " << mode.GetUniqueName () <<
@@ -521,13 +522,14 @@ IdealWifiManager::DoGetRtsTxVector (WifiRemoteStation *st)
   WifiMode mode;
   uint8_t nss = 1;
   WifiMode maxMode = GetDefaultMode ();
-  //RTS is sent in a non-HT frame
+  //avoid to use legacy rate adaptation algorithms for IEEE 802.11n/ac/ax
+  //RTS is sent in a legacy frame; RTS with HT/VHT/HE is not yet supported
   for (uint8_t i = 0; i < GetNBasicModes (); i++)
     {
       mode = GetBasicMode (i);
       txVector.SetMode (mode);
       txVector.SetNss (nss);
-      txVector.SetChannelWidth (GetChannelWidthForNonHtMode (mode));
+      txVector.SetChannelWidth (GetChannelWidthForMode (mode));
       double threshold = GetSnrThreshold (txVector);
       if (threshold > maxThreshold && threshold < station->m_lastSnrObserved)
         {
@@ -535,7 +537,7 @@ IdealWifiManager::DoGetRtsTxVector (WifiRemoteStation *st)
           maxMode = mode;
         }
     }
-  return WifiTxVector (maxMode, GetDefaultTxPowerLevel (), GetPreambleForTransmission (maxMode.GetModulationClass (), GetShortPreambleEnabled (), UseGreenfieldForDestination (GetAddress (station))), 800, GetNumberOfAntennas (), nss, 0, GetChannelWidthForNonHtMode (maxMode), GetAggregation (station), false);
+  return WifiTxVector (maxMode, GetDefaultTxPowerLevel (), GetPreambleForTransmission (maxMode.GetModulationClass (), GetShortPreambleEnabled (), UseGreenfieldForDestination (GetAddress (station))), 800, GetNumberOfAntennas (), nss, 0, GetChannelWidthForMode (maxMode), GetAggregation (station), false);
 }
 
 bool

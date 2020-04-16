@@ -224,10 +224,6 @@ TcpGeneralTest::DoRun (void)
                                               MakeCallback (&TcpGeneralTest::NextTxSeqTrace, this));
   m_senderSocket->TraceConnectWithoutContext ("HighestSequence",
                                               MakeCallback (&TcpGeneralTest::HighestTxSeqTrace, this));
-  m_senderSocket->m_rateOps->TraceConnectWithoutContext ("TcpRateUpdated",
-                                              MakeCallback (&TcpGeneralTest::RateUpdatedTrace, this));
-  m_senderSocket->m_rateOps->TraceConnectWithoutContext ("TcpRateSampleUpdated",
-                                              MakeCallback (&TcpGeneralTest::RateSampleUpdatedTrace, this));
 
 
   m_remoteAddr = InetSocketAddress (serverAddress, 4477);
@@ -870,12 +866,12 @@ TcpGeneralTest::GetRxBuffer (SocketWho who)
 {
   if (who == SENDER)
     {
-      return DynamicCast<TcpSocketMsgBase> (m_senderSocket)->m_tcb->m_rxBuffer;
+      return DynamicCast<TcpSocketMsgBase> (m_senderSocket)->m_rxBuffer;
     }
   else if (who == RECEIVER)
     {
 
-      return DynamicCast<TcpSocketMsgBase> (m_receiverSocket)->m_tcb->m_rxBuffer;
+      return DynamicCast<TcpSocketMsgBase> (m_receiverSocket)->m_rxBuffer;
     }
   else
     {
@@ -952,15 +948,15 @@ TcpGeneralTest::SetInitialCwnd (SocketWho who, uint32_t initialCwnd)
     }
 }
 void
-TcpGeneralTest::SetUseEcn (SocketWho who, TcpSocketState::UseEcn_t useEcn)
+TcpGeneralTest::SetEcn (SocketWho who, TcpSocketBase::EcnMode_t ecnMode)
 {
   if (who == SENDER)
     {
-      m_senderSocket->SetUseEcn (useEcn);
+      m_senderSocket->SetEcn (ecnMode);
     }
    else if (who == RECEIVER)
-    {
-      m_receiverSocket->SetUseEcn (useEcn);
+   {
+      m_receiverSocket->SetEcn (ecnMode);
     }
   else
     {
@@ -1173,7 +1169,7 @@ TcpSocketSmallAcks::SendEmptyPacket (uint8_t flags)
   // Actual division in small acks.
   if (hasSyn || hasFin)
     {
-      header.SetAckNumber (m_tcb->m_rxBuffer->NextRxSequence ());
+      header.SetAckNumber (m_rxBuffer->NextRxSequence ());
     }
   else
     {
@@ -1181,11 +1177,11 @@ TcpSocketSmallAcks::SendEmptyPacket (uint8_t flags)
 
       ackSeq = m_lastAckedSeq + m_bytesToAck;
 
-      if (m_bytesLeftToBeAcked == 0 && m_tcb->m_rxBuffer->NextRxSequence () > m_lastAckedSeq)
+      if (m_bytesLeftToBeAcked == 0 && m_rxBuffer->NextRxSequence () > m_lastAckedSeq)
         {
-          m_bytesLeftToBeAcked = m_tcb->m_rxBuffer->NextRxSequence ().GetValue () - 1 - m_bytesToAck;
+          m_bytesLeftToBeAcked = m_rxBuffer->NextRxSequence ().GetValue () - 1 - m_bytesToAck;
         }
-      else if (m_bytesLeftToBeAcked > 0 && m_tcb->m_rxBuffer->NextRxSequence () > m_lastAckedSeq)
+      else if (m_bytesLeftToBeAcked > 0 && m_rxBuffer->NextRxSequence () > m_lastAckedSeq)
         {
           m_bytesLeftToBeAcked -= m_bytesToAck;
         }
@@ -1257,7 +1253,7 @@ TcpSocketSmallAcks::SendEmptyPacket (uint8_t flags)
     }
 
   // send another ACK if bytes remain
-  if (m_bytesLeftToBeAcked > 0 && m_tcb->m_rxBuffer->NextRxSequence () > m_lastAckedSeq)
+  if (m_bytesLeftToBeAcked > 0 && m_rxBuffer->NextRxSequence () > m_lastAckedSeq)
     {
       SendEmptyPacket (flags);
     }

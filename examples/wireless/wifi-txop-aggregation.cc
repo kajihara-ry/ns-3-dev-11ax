@@ -57,14 +57,14 @@
 //
 // The user can select the distance between the stations and the APs, can enable/disable the RTS/CTS mechanism
 // and can modify the duration of a TXOP.
-// Example: ./waf --run "wifi-txop-aggregation --distance=10 --enableRts=0 --simulationTime=20"
+// Example: ./waf --run "wifi-aggregation --distance=10 --enableRts=0 --simulationTime=20"
 //
 // The output prints the throughput and the maximum TXOP duration measured for the 4 cases/networks
 // described above. When default aggregation parameters are enabled, the
-// maximum A-MPDU size is 65 kB and the throughput is maximal. When aggregation is disabled, the throughput is about the half of the physical
-// bitrate. When only A-MSDU is enabled, the throughput is increased but is not maximal, since the maximum A-MSDU size is limited to 7935 bytes
-// (whereas the maximum A-MPDU size is limited to 65535 bytes). When A-MSDU and A-MPDU are both enabled (= two-level aggregation),
-// the throughput is slightly smaller than the first scenario since we set a smaller maximum A-MPDU size.
+// maximum A-MPDU size is 65 kB and the throughput is maximal. When aggregation is disabled, the throughput is about the half of the
+// physical bitrate as in legacy wifi networks. When only A-MSDU is enabled, the throughput is increased but is not maximal, since the maximum
+// A-MSDU size is limited to 7935 bytes (whereas the maximum A-MPDU size is limited to 65535 bytes). When A-MSDU and A-MPDU are both enabled
+// (= two-level aggregation), the throughput is slightly smaller than the first scenario since we set a smaller maximum A-MPDU size.
 //
 // When the distance is increased, the frame error rate gets higher, and the output shows how it affects the throughput for the 4 networks.
 // Even through A-MSDU has less overheads than A-MPDU, A-MSDU is less robust against transmission errors than A-MPDU. When the distance is
@@ -318,7 +318,7 @@ int main (int argc, char *argv[])
 
   UdpClientHelper clientA (StaInterfaceA.GetAddress (0), port);
   clientA.SetAttribute ("MaxPackets", UintegerValue (4294967295u));
-  clientA.SetAttribute ("Interval", TimeValue (Time ("0.0001"))); //packets/s
+  clientA.SetAttribute ("Interval", TimeValue (Time ("0.00002"))); //packets/s
   clientA.SetAttribute ("PacketSize", UintegerValue (payloadSize));
 
   ApplicationContainer clientAppA = clientA.Install (wifiApNodes.Get (0));
@@ -332,7 +332,7 @@ int main (int argc, char *argv[])
 
   UdpClientHelper clientB (StaInterfaceB.GetAddress (0), port);
   clientB.SetAttribute ("MaxPackets", UintegerValue (4294967295u));
-  clientB.SetAttribute ("Interval", TimeValue (Time ("0.0001"))); //packets/s
+  clientB.SetAttribute ("Interval", TimeValue (Time ("0.00002"))); //packets/s
   clientB.SetAttribute ("PacketSize", UintegerValue (payloadSize));
 
   ApplicationContainer clientAppB = clientB.Install (wifiApNodes.Get (1));
@@ -346,7 +346,7 @@ int main (int argc, char *argv[])
 
   UdpClientHelper clientC (StaInterfaceC.GetAddress (0), port);
   clientC.SetAttribute ("MaxPackets", UintegerValue (4294967295u));
-  clientC.SetAttribute ("Interval", TimeValue (Time ("0.0001"))); //packets/s
+  clientC.SetAttribute ("Interval", TimeValue (Time ("0.00002"))); //packets/s
   clientC.SetAttribute ("PacketSize", UintegerValue (payloadSize));
 
   ApplicationContainer clientAppC = clientC.Install (wifiApNodes.Get (2));
@@ -360,7 +360,7 @@ int main (int argc, char *argv[])
 
   UdpClientHelper clientD (StaInterfaceD.GetAddress (0), port);
   clientD.SetAttribute ("MaxPackets", UintegerValue (4294967295u));
-  clientD.SetAttribute ("Interval", TimeValue (Time ("0.0001"))); //packets/s
+  clientD.SetAttribute ("Interval", TimeValue (Time ("0.00002"))); //packets/s
   clientD.SetAttribute ("PacketSize", UintegerValue (payloadSize));
 
   ApplicationContainer clientAppD = clientD.Install (wifiApNodes.Get (3));
@@ -393,7 +393,7 @@ int main (int argc, char *argv[])
   double throughput = totalPacketsThroughA * payloadSize * 8 / (simulationTime * 1000000.0);
   std::cout << "Default configuration (A-MPDU aggregation enabled, 65kB): " << '\n'
             << "  Throughput = " << throughput << " Mbit/s" << '\n';
-  if (verifyResults && (throughput < 57.5 || throughput > 58.5))
+  if (verifyResults && (throughput < 57 || throughput > 58))
     {
       NS_LOG_ERROR ("Obtained throughput " << throughput << " is not in the expected boundaries!");
       exit (1);
@@ -431,7 +431,7 @@ int main (int argc, char *argv[])
   throughput = totalPacketsThroughC * payloadSize * 8 / (simulationTime * 1000000.0);
   std::cout << "A-MPDU disabled and A-MSDU enabled (8kB): " << '\n'
             << "  Throughput = " << throughput << " Mbit/s" << '\n';
-  if (verifyResults && (throughput < 53 || throughput > 54))
+  if (verifyResults && (throughput < 53 || throughput > 53.5))
     {
       NS_LOG_ERROR ("Obtained throughput " << throughput << " is not in the expected boundaries!");
       exit (1);

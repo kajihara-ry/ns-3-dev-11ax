@@ -27,6 +27,8 @@
 #include "wifi-net-device.h"
 #include "wifi-phy.h"
 #include "wifi-mac.h"
+#include "wifi-rx-tag.h"
+#include "snr-tag.h"
 #include "ht-configuration.h"
 #include "vht-configuration.h"
 #include "he-configuration.h"
@@ -375,6 +377,12 @@ WifiNetDevice::ForwardUp (Ptr<Packet> packet, Mac48Address from, Mac48Address to
     {
       m_mac->NotifyRx (packet);
       packet->RemoveHeader (llc);
+      WifiRxTag wifiRxTag;
+      bool removed = packet->RemovePacketTag (wifiRxTag);
+      NS_ASSERT_MSG (!removed, "WifiRxTag should have been removed earlier");
+      SnrTag snrTag;
+      removed = packet->RemovePacketTag (snrTag);
+      NS_ASSERT_MSG (!removed, "SnrTag should have been removed earlier");
       m_forwardUp (this, packet, llc.GetType (), from);
     }
   else
@@ -385,6 +393,12 @@ WifiNetDevice::ForwardUp (Ptr<Packet> packet, Mac48Address from, Mac48Address to
   if (!m_promiscRx.IsNull ())
     {
       m_mac->NotifyPromiscRx (packet);
+      WifiRxTag wifiRxTag;
+      bool removed = packet->RemovePacketTag (wifiRxTag);
+      NS_ASSERT_MSG (!removed, "WifiRxTag should have been removed earlier");
+      SnrTag snrTag;
+      removed = packet->RemovePacketTag (snrTag);
+      NS_ASSERT_MSG (!removed, "SnrTag should have been removed earlier");
       m_promiscRx (this, packet, llc.GetType (), from, to, type);
     }
 }

@@ -59,6 +59,12 @@ public:
    * Evaluate the receipt of HE SIG.
    */
   void ReceiveHeSig (HePreambleParameters params);
+  /**
+   * \param params the HE Beacon parameters
+   *
+   * Evaluate the receipt of a beacon.
+   */
+  void ReceiveBeacon (HeBeaconReceptionParameters params);
 };
 
 } //namespace ns3

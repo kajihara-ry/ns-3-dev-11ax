@@ -292,8 +292,7 @@ RadioEnvironmentMapHelper::RunOneIteration (double xMin, double xMax, double yMi
         {
           NS_ASSERT (remIt != m_rem.end ());
           remIt->bmm->SetPosition (Vector (x, y, m_z));
-          Ptr <MobilityBuildingInfo> buildingInfo = (remIt->bmm)->GetObject <MobilityBuildingInfo> ();
-          buildingInfo->MakeConsistent (remIt->bmm);
+          BuildingsHelper::MakeConsistent (remIt->bmm);
           ++remIt;
         }      
     }

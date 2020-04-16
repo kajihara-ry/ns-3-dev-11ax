@@ -204,6 +204,7 @@ CaraWifiManager::DoGetDataTxVector (WifiRemoteStation *st)
   uint16_t channelWidth = GetChannelWidth (station);
   if (channelWidth > 20 && channelWidth != 22)
     {
+      //avoid to use legacy rate adaptation algorithms for IEEE 802.11n/ac
       channelWidth = 20;
     }
   WifiMode mode = GetSupported (station, station->m_rate);
@@ -225,6 +226,7 @@ CaraWifiManager::DoGetRtsTxVector (WifiRemoteStation *st)
   uint16_t channelWidth = GetChannelWidth (station);
   if (channelWidth > 20 && channelWidth != 22)
     {
+      //avoid to use legacy rate adaptation algorithms for IEEE 802.11n/ac
       channelWidth = 20;
     }
   WifiTxVector rtsTxVector;

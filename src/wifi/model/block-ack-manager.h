@@ -264,6 +264,17 @@ public:
    */
   void NotifyAgreementReset (Mac48Address recipient, uint8_t tid);
   /**
+   * \param recipient Address of peer station involved in block ack mechanism.
+   * \param tid Traffic ID of transmitted packet.
+   * \param nextSeqNumber Sequence number of the next packet that would be trasmitted by QosTxop.
+   * \param policy ack policy of the transmitted packet.
+   *
+   * This method is typically invoked by ns3::QosTxop object every time that a MPDU
+   * with ack policy subfield in Qos Control field set to Block Ack is transmitted.
+   * The <i>nextSeqNumber</i> parameter is used to block transmission of packets that are out of bitmap.
+   */
+  void NotifyMpduTransmission (Mac48Address recipient, uint8_t tid, uint16_t nextSeqNumber, WifiMacHeader::QosAckPolicy policy);
+  /**
    * \param nPackets Minimum number of packets for use of block ack.
    *
    * Upon receipt of a block ack frame, if total number of packets (packets in WifiMacQueue
@@ -293,6 +304,13 @@ public:
    * See ctrl-headers.h for more details.
    */
   void SetBlockAckType (BlockAckType bAckType);
+  /**
+   * \param maxDelay Max delay for a buffered packet.
+   *
+   * This method is always called by ns3::WifiMacQueue object and sets max delay equals
+   * to ns3:WifiMacQueue delay value.
+   */
+  void SetMaxPacketDelay (Time maxDelay);
 
   /**
    * Set block ack inactivity callback
@@ -325,16 +343,17 @@ public:
    */
   bool SwitchToBlockAckIfNeeded (Mac48Address recipient, uint8_t tid, uint16_t startingSeq);
   /**
-   * This function returns true if a Block Ack agreement is established with the
-   * given recipient for the given TID and there is at least an outstanding MPDU
-   * for such agreement whose lifetime is not expired.
+   * This function returns true if the lifetime of the packets a BAR refers to didn't
+   * expire yet otherwise it returns false.
+   * If it return false then the BAR will be discarded (i.e. will not be re-transmitted)
    *
    * \param tid Traffic ID
-   * \param recipient MAC address of the recipient
+   * \param seqNumber sequence number
+   * \param recipient MAC address
    *
    * \returns true if BAR retransmission needed
    */
-  bool NeedBarRetransmission (uint8_t tid, Mac48Address recipient);
+  bool NeedBarRetransmission (uint8_t tid, uint16_t seqNumber, Mac48Address recipient);
   /**
    * This function returns the buffer size negociated with the recipient.
    *
@@ -418,16 +437,16 @@ private:
   void InactivityTimeout (Mac48Address recipient, uint8_t tid);
 
   /**
-   * Remove packets from the retransmit queue and from the queue of outstanding
-   * packets that become old after setting the starting sequence number for the
-   * agreement with recipient equal to <i>recipient</i> and TID equal to <i>tid</i>
-   * to the given <i>startingSeq</i>.
+   * Set the starting sequence number for the agreement with recipient equal to
+   * <i>recipient</i> and TID equal to <i>tid</i> to the given <i>startingSeq</i>.
+   * Also, remove packets that became old from the retransmit queue and from the
+   * queue of outstanding packets.
    *
    * \param recipient the recipient MAC address
    * \param tid Traffic ID
    * \param startingSeq the new starting sequence number
    */
-  void RemoveOldPackets (Mac48Address recipient, uint8_t tid, uint16_t startingSeq);
+  void SetStartingSequence (Mac48Address recipient, uint8_t tid, uint16_t startingSeq);
 
   /**
    * typedef for a list of WifiMacQueueItem.
@@ -504,6 +523,7 @@ private:
 
   uint8_t m_blockAckThreshold; ///< block ack threshold
   BlockAckType m_blockAckType; ///< block ack type
+  Time m_maxDelay; ///< maximum delay
   Ptr<MacTxMiddle> m_txMiddle; ///< the MacTxMiddle
   Mac48Address m_address; ///< address
   Ptr<WifiMacQueue> m_queue; ///< queue

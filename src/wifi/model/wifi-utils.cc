@@ -196,16 +196,6 @@ GetBlockAckSize (BlockAckType type)
 }
 
 uint32_t
-GetBlockAckRequestSize (BlockAckType type)
-{
-  WifiMacHeader hdr;
-  hdr.SetType (WIFI_MAC_CTL_BACKREQ);
-  CtrlBAckRequestHeader bar;
-  bar.SetType (type);
-  return hdr.GetSize () + bar.GetSerializedSize () + 4;
-}
-
-uint32_t
 GetRtsSize (void)
 {
   WifiMacHeader rts;

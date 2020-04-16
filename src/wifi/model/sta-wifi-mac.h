@@ -51,6 +51,13 @@ struct ApInfo
   MgtProbeResponseHeader m_probeResp; ///< Probe Response header
 };
 
+// Parameters for receive HE Beacon
+struct HeBeaconReceptionParameters
+{
+  double rssiW; ///< RSSI in W
+  uint8_t bssColor; ///< BSS color
+};
+
 /**
  * \ingroup wifi
  *
@@ -309,6 +316,29 @@ private:
   void PhyCapabilitiesChanged (void);
 
   void DoInitialize (void);
+
+  /**
+   * Public method used to fire a BeaconReception trace for a wifi beacon being received.
+   * Implemented for encapsulation purposes.
+   *
+   * \param params the HE beacon reception parameters
+   */
+  void NotifyBeaconReception (HeBeaconReceptionParameters params);
+
+  /**
+   * TracedCallback signature for wifi beacon reception events.
+   *
+   *
+   * \param params the HE beacon reception parameters
+   */
+  typedef void (* BeaconReceptionCallback)(HeBeaconReceptionParameters params);
+
+  /**
+   * A trace source that emulates reception of a wifi beacon
+   *
+   * \see class CallBackTraceSource
+   */
+  TracedCallback<HeBeaconReceptionParameters> m_staWifiMacBeaconReceptionTrace;
 
   MacState m_state;            ///< MAC state
   Time m_waitBeaconTimeout;    ///< wait beacon timeout

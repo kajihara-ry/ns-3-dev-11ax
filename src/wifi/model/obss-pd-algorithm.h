@@ -28,6 +28,7 @@
 namespace ns3 {
 
 struct HePreambleParameters;
+struct HeBeaconReceptionParameters;
 
 class WifiNetDevice;
 
@@ -46,7 +47,9 @@ class ObssPdAlgorithm : public Object
 {
 public:
   static TypeId GetTypeId (void);
-
+  uint8_t m_Mcs;
+  double m_d;
+  double m_r;
   /**
    * Connect the WifiNetDevice and setup eventual callbacks.
    *
@@ -68,6 +71,13 @@ public:
   virtual void ReceiveHeSig (HePreambleParameters params) = 0;
 
   /**
+   * \param params the HE Beacon parameters
+   *
+   * Evaluate the receipt of a beacon.
+   */
+  virtual void ReceiveBeacon (HeBeaconReceptionParameters params) = 0;
+
+  /**
    * TracedCallback signature for OBSS_PD reset events.
    *
    * \param [in] bssColor The BSS color of frame triggering the reset
@@ -78,17 +88,18 @@ public:
    */
   typedef void (* ResetTracedCallback)(uint8_t bssColor, double rssiDbm, bool powerRestricted, double txPowerMaxDbmSiso, double txPowerMaxDbmMimo);
 
+
 protected:
   virtual void DoDispose (void);
 
   Ptr<WifiNetDevice> m_device; ///< Pointer to the WifiNetDevice
   double m_obssPdLevel;        ///< Current OBSS PD level
+  double m_obssPdLevelMin;     ///< Minimum OBSS PD level
+  double m_obssPdLevelMax;     ///< Maximum OBSS PD level
+  double m_txPowerRefSiso; ///< SISO reference TX power level
 
 
 private:
-  double m_obssPdLevelMin; ///< Minimum OBSS PD level
-  double m_obssPdLevelMax; ///< Maximum OBSS PD level
-  double m_txPowerRefSiso; ///< SISO reference TX power level
   double m_txPowerRefMimo; ///< MIMO reference TX power level
 
   TracedCallback<uint8_t, double, bool, double, double>  m_resetEvent;

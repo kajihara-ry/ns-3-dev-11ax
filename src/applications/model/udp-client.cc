@@ -49,10 +49,11 @@ UdpClient::GetTypeId (void)
     .AddAttribute ("MaxPackets",
                    "The maximum number of packets the application will send",
                    UintegerValue (100),
-                   MakeUintegerAccessor (&UdpClient::m_count),
+                   MakeUintegerAccessor (&UdpClient::SetMaxPackets),
                    MakeUintegerChecker<uint32_t> ())
     .AddAttribute ("Interval",
-                   "The time to wait between packets", TimeValue (Seconds (1.0)),
+                   "The time to wait between packets",
+                   TimeValue (Seconds (1.0)),
                    MakeTimeAccessor (&UdpClient::m_interval),
                    MakeTimeChecker ())
     .AddAttribute ("RemoteAddress",
@@ -106,6 +107,18 @@ UdpClient::DoDispose (void)
 {
   NS_LOG_FUNCTION (this);
   Application::DoDispose ();
+}
+
+void
+UdpClient::SetMaxPackets (uint32_t count)
+{
+  NS_LOG_FUNCTION (this << count);
+  m_count = count;
+  m_sent = 0;
+  if ((m_sendEvent.IsExpired ()) && (m_socket != 0))
+  {
+    m_sendEvent = Simulator::Schedule (Seconds (0.0), &UdpClient::Send, this);
+  }
 }
 
 void

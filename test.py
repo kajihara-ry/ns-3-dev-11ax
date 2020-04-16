@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 ## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
 #
 # Copyright (c) 2009 University of Washington
@@ -16,6 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
+from __future__ import print_function
 import os
 import sys
 import time
@@ -25,22 +26,9 @@ import threading
 import signal
 import xml.dom.minidom
 import shutil
-import fnmatch
+import re
 
 from utils import get_list_from_file
-
-# imported from waflib Logs
-colors_lst={'USE':True,'BOLD':'\x1b[01;1m','RED':'\x1b[01;31m','GREEN':'\x1b[32m','YELLOW':'\x1b[33m','PINK':'\x1b[35m','BLUE':'\x1b[01;34m','CYAN':'\x1b[36m','GREY':'\x1b[37m','NORMAL':'\x1b[0m','cursor_on':'\x1b[?25h','cursor_off':'\x1b[?25l',}
-def get_color(cl):
-    if colors_lst['USE']:
-        return colors_lst.get(cl,'')
-    return''
-class color_dict(object):
-    def __getattr__(self,a):
-        return get_color(a)
-    def __call__(self,a):
-        return get_color(a)
-colors=color_dict()
 
 try:
     import queue
@@ -103,7 +91,7 @@ test_runner_name = "test-runner"
 # If the user has constrained us to run certain kinds of tests, we can tell waf
 # to only build
 #
-core_kinds = ["core", "performance", "system", "unit"]
+core_kinds = ["bvt", "core", "performance", "system", "unit"]
 
 #
 # There are some special cases for test suites that kill valgrind.  This is
@@ -607,18 +595,7 @@ def sigint_hook(signal, frame):
 # and use that result.
 #
 def read_waf_config():
-    f = None
-    try:
-        # sys.platform reports linux2 for python2 and linux for python3
-        f = open(".lock-waf_" + sys.platform + "_build", "rt")
-    except FileNotFoundError:
-        try:
-            f = open(".lock-waf_linux2_build", "rt")
-        except FileNotFoundError:
-            print('The .lock-waf ... directory was not found.  You must do waf build before running test.py.', file=sys.stderr)
-            sys.exit(2)
-
-    for line in f:
+    for line in open(".lock-waf_" + sys.platform + "_build", "rt"):
         if line.startswith("top_dir ="):
             key, val = line.split('=')
             top_dir = eval(val.strip())
@@ -1100,19 +1077,20 @@ def run_tests():
         #
         if options.kinds or options.list or (len(options.constrain) and options.constrain in core_kinds):
             if sys.platform == "win32":
-                waf_cmd = "./waf --target=test-runner"
+                waf_cmd = sys.executable + " waf --target=test-runner"
             else:
-                waf_cmd = "./waf --target=test-runner"
+                waf_cmd = sys.executable + " waf --target=test-runner"
         elif len(options.example):
             if sys.platform == "win32": #Modify for windows
-                waf_cmd = "./waf --target=%s" % os.path.basename(options.example)
+                waf_cmd = sys.executable + " waf --target=%s" % os.path.basename(options.example)
             else:
-                waf_cmd = "./waf --target=%s" % os.path.basename(options.example)
+                waf_cmd = sys.executable + " waf --target=%s" % os.path.basename(options.example)
+
         else:
             if sys.platform == "win32": #Modify for windows
-                waf_cmd = "./waf"
+                waf_cmd = sys.executable + " waf"
             else:
-                waf_cmd = "./waf"
+                waf_cmd = sys.executable + " waf"
 
         if options.verbose:
             print("Building: %s" % waf_cmd)
@@ -1227,7 +1205,7 @@ def run_tests():
     if options.kinds:
         path_cmd = os.path.join("utils", test_runner_name + " --print-test-type-list")
         (rc, standard_out, standard_err, et) = run_job_synchronously(path_cmd, os.getcwd(), False, False)
-        print(standard_out)
+        print(standard_out.decode())
 
     if options.list:
         if len(options.constrain):
@@ -1327,19 +1305,14 @@ def run_tests():
         # See if this is a valid test suite.
         path_cmd = os.path.join("utils", test_runner_name + " --print-test-name-list")
         (rc, suites, standard_err, et) = run_job_synchronously(path_cmd, os.getcwd(), False, False)
-
         if isinstance(suites, bytes):
             suites = suites.decode()
-
-        suites_found = fnmatch.filter(suites.split('\n'), options.suite)
-
-        if not suites_found:
+        if options.suite in suites.split('\n'):
+            suites = options.suite + "\n"
+            single_suite = True
+        else:
             print('The test suite was not run because an unknown test suite name was requested.', file=sys.stderr)
             sys.exit(2)
-        elif len(suites_found) == 1:
-            single_suite = True
-
-        suites = '\n'.join(suites_found)
 
     elif len(options.example) == 0 and len(options.pyexample) == 0:
         if len(options.constrain):
@@ -1553,38 +1526,33 @@ def run_tests():
         # match what is done in the wscript file.
         example_name = "%s%s-%s%s" % (APPNAME, VERSION, options.example, BUILD_PROFILE_SUFFIX)
 
-        key_list = []
-        for key in ns3_runnable_programs_dictionary:
-            key_list.append (key)
-        example_name_key_list = fnmatch.filter(key_list, example_name)
-
-        if len(example_name_key_list) == 0:
-            print("No example matching the name %s" % options.example)
+        # Don't try to run this example if it isn't runnable.
+        if example_name not in ns3_runnable_programs_dictionary:
+            print("Example %s is not runnable." % example_name)
         else:
             #
             # If you tell me to run an example, I will try and run the example
             # irrespective of any condition.
             #
-            for example_name_iter in example_name_key_list:
-                example_path = ns3_runnable_programs_dictionary[example_name_iter]
-                example_path = os.path.abspath(example_path)
-                job = Job()
-                job.set_is_example(True)
-                job.set_is_pyexample(False)
-                job.set_display_name(example_path)
-                job.set_tmp_file_name("")
-                job.set_cwd(testpy_output_dir)
-                job.set_basedir(os.getcwd())
-                job.set_tempdir(testpy_output_dir)
-                job.set_shell_command(example_path)
-                job.set_build_path(options.buildpath)
+            example_path = ns3_runnable_programs_dictionary[example_name]
+            example_path = os.path.abspath(example_path)
+            job = Job()
+            job.set_is_example(True)
+            job.set_is_pyexample(False)
+            job.set_display_name(example_path)
+            job.set_tmp_file_name("")
+            job.set_cwd(testpy_output_dir)
+            job.set_basedir(os.getcwd())
+            job.set_tempdir(testpy_output_dir)
+            job.set_shell_command(example_path)
+            job.set_build_path(options.buildpath)
 
-                if options.verbose:
-                    print("Queue %s" % example_name_iter)
+            if options.verbose:
+                print("Queue %s" % example_name)
 
-                input_queue.put(job)
-                jobs = jobs + 1
-                total_tests = total_tests + 1
+            input_queue.put(job)
+            jobs = jobs + 1
+            total_tests = total_tests + 1
 
     #
     # Run some Python examples as smoke tests.  We have a list of all of
@@ -1720,34 +1688,29 @@ def run_tests():
 
         if job.is_skip:
             status = "SKIP"
-            status_print = colors.GREY + status + colors.NORMAL
             skipped_tests = skipped_tests + 1
             skipped_testnames.append(job.display_name + (" (%s)" % job.skip_reason))
         else:
             if job.returncode == 0:
                 status = "PASS"
-                status_print = colors.GREEN + status + colors.NORMAL
                 passed_tests = passed_tests + 1
             elif job.returncode == 1:
                 failed_tests = failed_tests + 1
                 failed_testnames.append(job.display_name)
                 status = "FAIL"
-                status_print = colors.RED + status + colors.NORMAL
             elif job.returncode == 2:
                 valgrind_errors = valgrind_errors + 1
                 valgrind_testnames.append(job.display_name)
                 status = "VALGR"
-                status_print = colors.CYAN + status + colors.NORMAL
             else:
                 crashed_tests = crashed_tests + 1
                 crashed_testnames.append(job.display_name)
                 status = "CRASH"
-                status_print = colors.PINK + status + colors.NORMAL
 
         if options.duration or options.constrain == "performance":
-            print("%s (%.3f): %s %s" % (status_print, job.elapsed_time, kind, job.display_name))
+            print("%s (%.3f): %s %s" % (status, job.elapsed_time, kind, job.display_name))
         else:
-            print("%s: %s %s" % (status_print, kind, job.display_name))
+            print("%s: %s %s" % (status, kind, job.display_name))
 
         if job.is_example or job.is_pyexample:
             #
@@ -2007,16 +1970,10 @@ def main(argv):
                       metavar="XML-FILE",
                       help="write detailed test results into XML-FILE.xml")
 
-    parser.add_option("--nocolor", action="store_true", dest="nocolor", default=False,
-                      help="do not use colors in the standard output")
-
     global options
     options = parser.parse_args()[0]
     signal.signal(signal.SIGINT, sigint_hook)
-    
-    if options.nocolor:
-        colors_lst['USE'] = False
-    
+
     return run_tests()
 
 if __name__ == '__main__':
