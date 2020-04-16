@@ -1,0 +1,2746 @@
+Running RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.354s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.93479 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.7392
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 35.8935
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.6327
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+
+Running RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+[551/554] Compiling spatial-reuse.cc
+[554/554] Linking ../../../build/src/wifi-he/examples/ns3-dev-spatial-reuse-debug
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (5.841s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   7.89453 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 31.5781
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 22.9893
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 54.5675
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+
+Running RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.317s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.2419 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 20.9676
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 15.2323
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 36.1999
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+
+Running RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.327s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.7708 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 19.0832
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 10.6713
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 29.7545
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+
+Running RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.373s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.27583 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 9.10333
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 18.9247
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.0281
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+
+Running RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.429s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.38498 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 9.53991
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 11.046
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 20.5859
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+
+Running RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.419s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.22745 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 16.9098
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 16.7602
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 33.67
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun1_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.302s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   9.14941 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 36.5976
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 35.0042
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.6019
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.318s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   7.1661 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 28.6644
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 29.7456
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 58.41
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.311s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   1.46377 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 5.8551
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 27.7688
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 33.6239
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.334s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.62779 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 22.5112
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 14.3198
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 36.831
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.328s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.88931 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 23.5572
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 15.9804
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 39.5376
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.331s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.1734 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 16.6936
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 14.8903
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 31.5839
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+
+Running RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.310s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.04001 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 8.16002
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 15.3291
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 23.4891
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun2_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+
+Running RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.356s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.84093 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.3637
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 36.2352
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.5989
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.320s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   6.59943 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 26.3977
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 35.2366
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 61.6344
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.365s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.72926 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 22.917
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 30.4563
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 53.3733
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.308s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.27737 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 9.10946
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 19.485
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.5944
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.320s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.15256 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 12.6102
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 22.5429
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 35.1531
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.326s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   1.01537 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 4.0615
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 10.5035
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 14.565
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.340s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.37573 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 13.5029
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 14.9247
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.4276
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun3_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.349s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.90857 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.6343
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 36.0017
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.636
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.318s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   6.92379 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 27.6952
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 33.4297
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 61.1249
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.328s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.03846 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 16.1538
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 19.8832
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 36.037
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.319s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.87352 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 19.4941
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 12.453
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 31.9471
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.352s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.08941 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 12.3576
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 17.2274
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 29.585
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.373s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.44357 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 17.7743
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 13.3351
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 31.1094
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.391s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.25351 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 9.01403
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 13.5605
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 22.5746
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun4_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.353s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.83168 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.3267
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 36.3171
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.6438
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.356s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.47416 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 33.8967
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 30.0739
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 63.9706
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.349s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   6.76043 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 27.0417
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 8.01956
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 35.0613
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.350s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   1.67584 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 6.70336
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 14.8765
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 21.5798
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.340s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.98815 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 23.9526
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 22.6516
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 46.6042
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.358s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.89296 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 19.5718
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 20.6638
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 40.2356
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.348s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.71548 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 14.8619
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 8.5205
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 23.3824
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun5_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.375s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   9.09557 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 36.3823
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 35.2112
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.5934
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.334s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.76614 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.0646
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 27.8665
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 62.9311
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.358s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.84747 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 15.3899
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 25.3977
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 40.7876
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.375s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.1048 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 20.4192
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 23.2255
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 43.6447
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.361s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.79361 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 23.1744
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 11.8381
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 35.0125
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.362s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.6483 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 10.5932
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 15.1214
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 25.7146
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.370s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.0818 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 12.3272
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 11.555
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 23.8822
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun6_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.341s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.78246 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.1298
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 36.5071
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.6369
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.307s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.51398 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 34.0559
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 25.9943
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 60.0502
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.304s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.2446 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 20.9784
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 25.6413
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 46.6198
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.305s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.62541 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 14.5016
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 17.6479
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 32.1496
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.312s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.62542 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 18.5017
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 10.1252
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.6269
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.319s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.6162 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 22.4648
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 18.4811
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 40.9459
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.336s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.81307 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 11.2523
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 17.2606
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.5129
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun7_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.332s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.88098 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.5239
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 36.0552
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.5791
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.310s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.97578 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.9031
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 27.5236
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 63.4268
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.303s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   6.43989 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 25.7596
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 7.81892
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 33.5785
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.303s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.09207 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 16.3683
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 22.7308
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 39.0991
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.307s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.19395 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 12.7758
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 16.4782
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 29.254
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.326s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   1.47829 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 5.91315
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 14.9255
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 20.8387
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.342s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.61981 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 14.4792
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 17.7761
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 32.2553
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun8_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.341s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   8.77293 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 35.0917
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 36.5678
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.6595
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.308s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   7.31304 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 29.2522
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 28.4663
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 57.7184
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.302s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.56683 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 14.2673
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 22.1119
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 36.3793
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.302s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   2.17142 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 8.6857
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 20.1547
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.8404
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.320s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.70267 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 18.8107
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 9.4136
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 28.2243
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.338s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.65079 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 18.6032
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 18.3408
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 36.9439
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.311s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.91062 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 15.6425
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 9.81802
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 25.4605
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun9_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.386s)
+Uplink interval:+29000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 1 => nStas: 2
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 1
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   9.0105 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 36.042
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 35.6074
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 71.6494
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_1STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.348s)
+Uplink interval:+147000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 5 => nStas: 10
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 5
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   5.0196 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 20.0784
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 34.5731
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 54.6515
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_5STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.359s)
+Uplink interval:+294000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 10 => nStas: 20
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 10
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   6.08234 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 24.3294
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 8.37097
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 32.7003
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_10STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.345s)
+Uplink interval:+441000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 15 => nStas: 30
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 15
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.08249 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 16.33
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 15.568
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 31.898
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_15STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.354s)
+Uplink interval:+588000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 20 => nStas: 40
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 20
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.31735 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 17.2694
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 17.2336
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 34.5031
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_20STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.371s)
+Uplink interval:+736000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 25 => nStas: 50
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 25
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   4.37891 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 17.5156
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 20.4793
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 37.9949
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_25STA_r8_d15_cca-62.dat
+Running RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62
+Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.367s)
+Uplink interval:+883000.0ns Downlink interval:+0.0ns
+ApplicationTxStart: 1 Duration: 10
+nBss: 2 nStas/Bss: 30 => nStas: 60
+Spatial Reuse Statistics
+Scenario: logdistance
+APs: 2
+Nodes per AP: 30
+Distance between APs [m]: 15
+Radius [m]: 8
+Uplink [Mbps]: 400
+Downlink [Mbps]: 0
+Uplink Efficiency   3.31729 [%]
+Downlink Efficiency 0 [%]
+Throughput,  AP1 Uplink   [Mbps] : 13.2692
+Throughput,  AP1 Downlink [Mbps] : 0
+Throughput,  AP2 Uplink   [Mbps] : 12.2009
+Throughput,  AP2 Downlink [Mbps] : 0
+Total Throughput Uplink   [Mbps] : 25.4701
+Total Throughput Downlink [Mbps] : 0
+Spatial Reuse Stats written to: spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+0 matching data points
+Complete.  Removing the following files:
+../../../spatial-reuse-A-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.flowmon
+../../../spatial-reuse-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.tr
+../../../spatial-reuse-SR-stats-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-operatorA-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62
+../../../spatial-reuse-positions-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.csv
+../../../spatial-reuse-state-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.dat
+../../../spatial-reuse-tgax-calibration-timings-RngRun10_Duration10_2BSS_30STA_r8_d15_cca-62.dat
