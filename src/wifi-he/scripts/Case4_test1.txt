@@ -40,8 +40,6 @@ Complete.  Removing the following files:
 
 Running RngRun1_Duration10_2BSS_5STA_r8_d15_cca-62
 Waf: Entering directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
-[551/554] Compiling spatial-reuse.cc
-[554/554] Linking ../../../build/src/wifi-he/examples/ns3-dev-spatial-reuse-debug
 Waf: Leaving directory `/home/kajihara/Case4/ns-3-dev-11ax/build'
 Build commands will be stored in build/compile_commands.json
 'build' finished successfully (5.841s)

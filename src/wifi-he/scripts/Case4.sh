@@ -4,7 +4,7 @@ cd ../examples
 
 # 2BSS test
 # miscellaneous settings for spatial-reuse script / ns-3
-export RngRun=10  #random number seed
+export RngRun=1  #random number seed
 export duration=10  #Simulation duration in seconds
 export enableRts=0   #RTS enabled (1) or disabled (0)
 export txStartOffset=50
