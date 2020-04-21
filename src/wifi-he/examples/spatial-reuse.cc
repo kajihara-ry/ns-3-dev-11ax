@@ -606,18 +606,18 @@ SaveSpectrumPhyStats (std::string filename, const std::vector<SignalArrival> &ar
     }
   outFile.close ();
 }
-
+// ---------------------------------------------------display CW and BO----------------------------------------------------------------------
 void
 CwTrace (std::string context, uint32_t oldVal, uint32_t newVal)
 {
-  //std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+  std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
 }
 void
 BackoffTrace (std::string context, uint32_t newVal)
 {
-  //std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+  std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
 }
-
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void
 SchedulePhyLogConnect (void)
 {
@@ -2316,10 +2316,7 @@ bytesTransmitted[nodeId] = 0;
       unitDiscPositionAllocator1->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-         //Vector v = unitDiscPositionAllocator1->GetNext ();
-          Vector v; //配置の記述
-          v.x = 0;
-          v.y = r;
+          Vector v = unitDiscPositionAllocator1->GetNext ();
           positionOutFile << v.x << ", " << v.y << std::endl;
         }
       positionOutFile << std::endl;
@@ -2339,10 +2336,7 @@ bytesTransmitted[nodeId] = 0;
       unitDiscPositionAllocator2->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-          //Vector v = unitDiscPositionAllocator1->GetNext ();
-          Vector v; //配置の記述
-          v.x = d;
-          v.y = r;
+          Vector v = unitDiscPositionAllocator1->GetNext ();
           positionOutFile << v.x << ", " << v.y << std::endl;
         }
       positionOutFile << std::endl;
@@ -2459,7 +2453,8 @@ bytesTransmitted[nodeId] = 0;
     }
   else
     {
-
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//----------------------senario=logdistance-----------------------------------------------------------------------------
       double x1 = 0.0;
       double y1 = 0.0;
       double theta = 0.0;  // radians
@@ -2528,13 +2523,14 @@ bytesTransmitted[nodeId] = 0;
       positionOutFile << std::endl;
         }
 
-
+//---------------------------------------各BSSのSTAの配置--------------------------------------------------------
       // Network "A"
       // AP1
-      positionAlloc->Add (Vector (0.0, 0.0, 0.0));
+      positionAlloc->Add (Vector (0.0, 0.0, 0.0)); //Vector(x,y,z) 1つめのAPは原点に配置
       // STAs for AP1
       // STAs for each AP are allocated uwing a different instance of a UnitDiscPositionAllocation.  To
       // ensure unique randomness of positions,  each allocator must be allocated a different stream number.
+      //訳：ランダム性の確保のため、unitDiscPositionAllocator1のように各BSSで別のものを用意する
       Ptr<UniformDiscPositionAllocator> unitDiscPositionAllocator1 = CreateObject<UniformDiscPositionAllocator> ();
       unitDiscPositionAllocator1->AssignStreams (streamNumber);
       // AP1 is at origin (x=0, y=0), with radius Rho=r
@@ -2544,11 +2540,12 @@ bytesTransmitted[nodeId] = 0;
       for (uint32_t i = 0; i < n; i++)
         {
           //Vector v = unitDiscPositionAllocator1->GetNext ();
-          Vector v; //配置の記述
+          Vector v; //配置の記述(以下3行)
           v.x = 0;
           v.y = r;
-          positionAlloc->Add (v);
+          positionAlloc->Add (v); //positionAllocのイメージ→ [0]=APの配置,[1]=属するSTA1の配置,[2]=STA2,[3]=3,[4]=4,.....(STAの配置はfor文でn回分)
           positionOutFile << v.x << ", " << v.y << std::endl;
+          //std::cout << "BSS1 AP or STA set" << std::endl;
         }
       positionOutFile << std::endl;
       positionOutFile << std::endl;
@@ -2574,6 +2571,7 @@ bytesTransmitted[nodeId] = 0;
              v.y = r;
              positionAlloc->Add (v);
              positionOutFile << v.x << ", " << v.y << std::endl;
+             //std::cout << "BSS2 AP or STA set" << std::endl;
             }
         }
       else
@@ -2746,7 +2744,7 @@ bytesTransmitted[nodeId] = 0;
 
   positionOutFile << std::endl;
   positionOutFile.close ();
-
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   double perNodeUplinkMbps = aggregateUplinkMbps / n;
   double perNodeDownlinkMbps = aggregateDownlinkMbps / n;
   Time intervalUplink = MicroSeconds (payloadSizeUplink * 8 / perNodeUplinkMbps);
