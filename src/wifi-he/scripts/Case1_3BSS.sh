@@ -2,7 +2,7 @@
 source spatial-reuse-functions.sh
 cd ../examples
 
-# 2BSS test
+# 3BSS test
 # miscellaneous settings for spatial-reuse script / ns-3
 export RngRun=1  #random number seed
 export duration=10  #Simulation duration in seconds
