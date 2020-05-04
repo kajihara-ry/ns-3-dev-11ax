@@ -610,12 +610,12 @@ SaveSpectrumPhyStats (std::string filename, const std::vector<SignalArrival> &ar
 void
 CwTrace (std::string context, uint32_t oldVal, uint32_t newVal)
 {
-  std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+  //std::cout <<"CW "<< Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
 }
 void
 BackoffTrace (std::string context, uint32_t newVal)
 {
-  std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
+  //std::cout  <<"BO " <<Simulator::Now ().GetMicroSeconds () << " " << ContextToNodeId (context) << " " << newVal << std::endl;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void
@@ -1361,6 +1361,7 @@ main (int argc, char *argv[])
   double s0 = 0.7;
   double gamma = 3.0;
   csr = txRange * pow (s0, 1.0 / gamma);
+  //std::cout << "Carrier Sence Range:CCA_CS[m] = " << csr << std::endl;
 
   WifiHelper wifi;
   std::string dataRate;
@@ -2523,7 +2524,7 @@ bytesTransmitted[nodeId] = 0;
       positionOutFile << std::endl;
         }
 
-//---------------------------------------各BSSのSTAの配置--------------------------------------------------------
+//---------------------------------------各BSSのSTAの配置Position Setting--------------------------------------------------------
       // Network "A"
       // AP1
       positionAlloc->Add (Vector (0.0, 0.0, 0.0)); //Vector(x,y,z) 1つめのAPは原点に配置
@@ -2545,7 +2546,7 @@ bytesTransmitted[nodeId] = 0;
           v.y = r;
           positionAlloc->Add (v); //positionAllocのイメージ→ [0]=APの配置,[1]=属するSTA1の配置,[2]=STA2,[3]=3,[4]=4,.....(STAの配置はfor文でn回分)
           positionOutFile << v.x << ", " << v.y << std::endl;
-          //std::cout << "BSS1 AP or STA set" << std::endl;
+          //std::cout << "BSS1 AP or STA set " <<"(x,y) = " << v.x <<", " << v.y << std::endl; //Output position
         }
       positionOutFile << std::endl;
       positionOutFile << std::endl;
@@ -2571,7 +2572,7 @@ bytesTransmitted[nodeId] = 0;
              v.y = r;
              positionAlloc->Add (v);
              positionOutFile << v.x << ", " << v.y << std::endl;
-             //std::cout << "BSS2 AP or STA set" << std::endl;
+             //std::cout << "BSS2 AP or STA set " <<"(x,y) = " << v.x <<", " << v.y << std::endl;
             }
         }
       else
@@ -2599,9 +2600,13 @@ bytesTransmitted[nodeId] = 0;
       unitDiscPositionAllocator3->SetRho (r);
       for (uint32_t i = 0; i < n; i++)
         {
-          Vector v = unitDiscPositionAllocator3->GetNext ();
-          positionAlloc->Add (v);
-          positionOutFile << v.x << ", " << v.y << std::endl;
+         //Vector v = unitDiscPositionAllocator3->GetNext ();
+         Vector v;
+         v.x = x3;
+         v.y = y3+r;
+         positionAlloc->Add (v);
+         positionOutFile << v.x << ", " << v.y << std::endl;
+         //std::cout << "BSS3 AP or STA set " <<"(x,y) = " << v.x <<", " << v.y << std::endl;
         }
         }
       else
