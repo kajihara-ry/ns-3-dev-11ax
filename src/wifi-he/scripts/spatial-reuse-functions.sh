@@ -200,7 +200,7 @@ function run_one () {
         --powAp=${powAp} \
         --duration=${duration} \
         --d=${d} \
-        --r=${r} \
+        --r=${r} \ 
         --n=${n} \
         --uplink=${uplink} \
         --downlink=${downlink} \
@@ -257,9 +257,10 @@ function run_one () {
         --colorBss5=${colorBss5} \
         --colorBss6=${colorBss6} \
         --colorBss7=${colorBss7} \
-        --powerBackoff=${powerBackoff}
-	--ccaTrSta=${ccaTrSta} \
-	--ccaTrAp=${ccaTrAp}"
+        --powerBackoff=${powerBackoff}\
+	--ccaTrSta=${ccaTrSta}\
+	--ccaTrAp=${ccaTrAp}\
+	--obssPdAlgorithm=${obssPdAlgorithm}" 
 
   # copy results files
   cd ../scripts
