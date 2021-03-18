@@ -1,26 +1,26 @@
 # 11ac Multi-BSS Simulator 
 
-It contains a network simulator for research.
+It contains a network simulator for research (PIMRC paper).
 
-Location of files used for simulation
+Location of script used for simulation
 →./ns3/src/wifi-he/src
 
-used file "2bsstest.sh"
+used script "PIMRC_sim.sh"
 
 reference simulator:https://github.com/nsnam/ns-3-dev-git
 
 [ns-3 installation procedure(Ubuntu 16.04)]
 
-1 Download the two files "install_packages.sh" and "ns3_packages.txt" on the page.
-  After downloading two files, move the two files to a non-Japanese directory.
+1. Clone this branch.
 
-2 Move to the directory containing two files with $cd command.
-  After moving the directory, enter the following command.
-  chmod +x install_packages.sh
+2. Build ns-3 under the 'ns-3-dev-11ax' folder.
 
-3 Enter the following command.
-  $sh install_packages.sh
+   command : ./waf configure --enable-examples --enable-tests --build-profile=optimized
 
-4 Entering this command starts the installation of ns-3.
-  After a few minutes, the installation is complete.
+3. Compile ns-3.
+
+   command : ./waf
+   
+4. After compiling ns-3, it will be possible to run simulations.
+
 
